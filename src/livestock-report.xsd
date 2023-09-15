@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:eCH_0266="http://www.admin.ch/xmlns/DataTypes/evd/structure/2"
+	targetNamespace="http://www.admin.ch/xmlns/DataTypes/evd/structure/2"
+	elementFormDefault="qualified" attributeFormDefault="unqualified" version="2023-01">
+
+
+	<!-- This is a portion of the eCH-0266 proposal. Once
+		incorporated into that this file can be deleted. -->
+	<xs:complexType name="livestockReportType">
+		<xs:annotation>
+			<xs:documentation xml:lang="de"> </xs:documentation>
+			<xs:documentation xml:lang="en"> This defines the animal stock per location and
+				reporting source on year-round farms. The report is for the previous
+				year vis-à-vis the report date.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="livestock" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="surveyYear" type="xs:gYear">
+							<xs:annotation>
+								<xs:documentation xml:lang="de"> Enthält das Jahr, in welche die
+									Daten erhoben wurden. </xs:documentation>
+								<xs:documentation xml:lang="en"> The year for which the data is
+									reported. In practice this will be the year previous to that of
+									the report date. </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="reportDate" type="xs:date">
+							<xs:annotation>
+								<xs:documentation xml:lang="de"> Enthält das Datum des Berichts bzw.
+									der Datenübertragung. </xs:documentation>
+								<xs:documentation xml:lang="en"> The date on which the report was
+									created or data transmission effected. </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<!-- change data type before publishing and refer to proper eCH standard -->
+						<xs:element name="mainLocalUnit" type="eCH_0266:localUnitIdentifier"/>
+						<!-- change data type before publishing and refer to proper eCH standard -->
+						<xs:element name="subordinateLocalUnit" type="eCH_0266:localUnitIdentifier"/>
+						<xs:element name="animalCategory" type="eCH_0266:animalCategoryType"/>
+						<xs:choice>
+							<xs:element name="livestockAnimalTracing"
+								type="eCH_0266:livestockReportedViaAnimalTracingType"/>
+							<xs:element name="livestockSelfDeclared"
+										type="eCH_0266:selfReportedLivestockType" maxOccurs="unbounded"
+							/>
+						</xs:choice>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="livestockReportedViaAnimalTracingType">
+		<xs:sequence>
+			<xs:element name="atdDataOriginal"
+				type="eCH_0266:livestockReportedViaAnimalTracingOriginalType"/>
+			<xs:element name="atdDataFinal"
+				type="eCH_0266:livestockReportedViaAnimalTracingFinalType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="livestockReportedViaAnimalTracingOriginalType">
+		<xs:sequence>
+			<xs:element name="quantityTotal" type="eCH_0266:QuantityDecimal"/>
+			<xs:element name="livestockUnitTotal" type="eCH_0266:GVE"/>
+			<xs:element name="durationSumTotal" type="eCH_0266:Tage"/>
+			<xs:element name="surveyFarmDetails">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="declarationDayQuantity" type="xs:nonNegativeInteger"/>
+						<xs:element name="quantity" type="eCH_0266:QuantityDecimal"/>
+						<xs:element name="livestockUnit" type="eCH_0266:GVE"/>
+						<xs:element name="durationSum" type="eCH_0266:Tage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="summeringInlandDetails" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="livestockUnit" type="eCH_0266:GVE"/>
+						<xs:element name="normedLivestockUnit" type="eCH_0266:NST"/>
+						<xs:element name="durationSum" type="eCH_0266:Tage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="summeringAbroadDetails" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="livestockUnit" type="eCH_0266:GVE"/>
+						<xs:element name="durationSum" type="eCH_0266:Tage"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="livestockReportedViaAnimalTracingFinalType">
+		<xs:sequence>
+			<xs:element name="quantityTotal" type="eCH_0266:QuantityDecimal"/>
+			<xs:element name="livestockUnitTotal" type="eCH_0266:GVE"/>
+			<xs:element name="surveyFarmDetails">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="declarationDayQuantity" type="xs:nonNegativeInteger"/>
+						<xs:element name="quantity" type="eCH_0266:QuantityDecimal"/>
+						<xs:element name="livestockUnit" type="eCH_0266:GVE"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="summeringInlandDetails" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="livestockUnit" type="eCH_0266:GVE"/>
+						<xs:element name="normedLivestockUnit" type="eCH_0266:NST"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="summeringAbroadDetails" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="livestockUnit" type="eCH_0266:GVE"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="selfReportedLivestockType">
+		<xs:sequence>
+			<xs:element name="declarationDayQuantity" type="xs:nonNegativeInteger"/>
+			<xs:element name="averageQuantity" type="xs:nonNegativeInteger"/>
+			<xs:element name="keepingType" type="eCH_0266:animalKeepingType" minOccurs="0"/>
+			<xs:element name="summeringQuantity" type="xs:nonNegativeInteger"/>
+			<xs:element name="summeringDuration" type="xs:gDay"> </xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<!-- ANIMAL SUMMERING DATA -->
+
+	<xs:complexType name="animalSummeringDataType">
+		<xs:sequence>
+			<xs:element name="animalStock" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="creationDate" type="eCH_0266:Erstelldatum"/>
+						<xs:element name="localFarmId" type="eCH_0266:localUnitIdentifier"/>
+						<xs:element name="localPersonId" type="eCH_0266:personIdType"/>
+						<xs:element name="animalCategory" type="eCH_0266:animalCategoryType"/>
+						<xs:choice>
+							<xs:element name="atdData" type="eCH_0266:atdSummeringDataType"/>
+							<xs:element name="selfreportedData"
+								type="eCH_0266:selfReportedLivestockType"
+								maxOccurs="unbounded"/>
+						</xs:choice>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="atdSummeringDataType">
+		<xs:sequence>
+			<xs:element name="atdDataOriginal"
+				type="eCH_0266:animalTracingSummeringDataOriginalType"/>
+			<xs:element name="atdDataFinal" type="eCH_0266:animalTracingSummeringDataFinalType"
+			/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="animalTracingSummeringDataOriginalType">
+		<xs:sequence>
+			<xs:element name="declarationDayQuantity" type="xs:nonNegativeInteger"/>
+			<xs:element name="quantityTotal" type="eCH_0266:QuantityDecimal"/>
+			<xs:element name="livestockUnit" type="eCH_0266:GVE"/>
+			<xs:element name="normedLivestockUnit" type="eCH_0266:NST"/>
+			<xs:element name="durationSum" type="eCH_0266:Tage"/>
+			<xs:element name="averageAnimalDurationSum" type="eCH_0266:Tage"/>
+			<xs:element name="quantitySumNotTerminated" type="xs:nonNegativeInteger"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="animalTracingSummeringDataFinalType">
+		<xs:sequence>
+			<xs:element name="quantityTotal" type="eCH_0266:QuantityDecimal"/>
+			<xs:element name="livestockUnit" type="eCH_0266:GVE"/>
+			<xs:element name="normedLivestockUnit" type="eCH_0266:NST"/>
+			<xs:element name="averageAnimalDurationSum" type="eCH_0266:Tage"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="summeringTypeType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<!-- CODES ENUMERATION -->
+
+	<xs:simpleType name="animalCategoryType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="1110"/>
+			<xs:enumeration value="1123"/>
+			<xs:enumeration value="1124"/>
+			<xs:enumeration value="1128"/>
+			<xs:enumeration value="1129"/>
+			<xs:enumeration value="1141"/>
+			<xs:enumeration value="1142"/>
+			<xs:enumeration value="1143"/>
+			<xs:enumeration value="1144"/>
+			<xs:enumeration value="1150"/>
+			<xs:enumeration value="1222"/>
+			<xs:enumeration value="1223"/>
+			<xs:enumeration value="1224"/>
+			<xs:enumeration value="1225"/>
+			<xs:enumeration value="1262"/>
+			<xs:enumeration value="1263"/>
+			<xs:enumeration value="1264"/>
+			<xs:enumeration value="1265"/>
+			<xs:enumeration value="1351"/>
+			<xs:enumeration value="1353"/>
+			<xs:enumeration value="1355"/>
+			<xs:enumeration value="1357"/>
+			<xs:enumeration value="1359"/>
+			<xs:enumeration value="1461"/>
+			<xs:enumeration value="1463"/>
+			<xs:enumeration value="1465"/>
+			<xs:enumeration value="1467"/>
+			<xs:enumeration value="1471"/>
+			<xs:enumeration value="1472"/>
+			<xs:enumeration value="1571"/>
+			<xs:enumeration value="1572"/>
+			<xs:enumeration value="1575"/>
+			<xs:enumeration value="1578"/>
+			<xs:enumeration value="1581"/>
+			<xs:enumeration value="1582"/>
+			<xs:enumeration value="1585"/>
+			<xs:enumeration value="1586"/>
+			<xs:enumeration value="1611"/>
+			<xs:enumeration value="1615"/>
+			<xs:enumeration value="1621"/>
+			<xs:enumeration value="1631"/>
+			<xs:enumeration value="1635"/>
+			<xs:enumeration value="1639"/>
+			<xs:enumeration value="1751"/>
+			<xs:enumeration value="1753"/>
+			<xs:enumeration value="1754"/>
+			<xs:enumeration value="1755"/>
+			<xs:enumeration value="1757"/>
+			<xs:enumeration value="1761"/>
+			<xs:enumeration value="1762"/>
+			<xs:enumeration value="1763"/>
+			<xs:enumeration value="1861"/>
+			<xs:enumeration value="1862"/>
+			<xs:enumeration value="1863"/>
+			<xs:enumeration value="1871"/>
+			<xs:enumeration value="1872"/>
+			<xs:enumeration value="1876"/>
+			<xs:enumeration value="1877"/>
+			<xs:enumeration value="1878"/>
+			<xs:enumeration value="1883"/>
+			<xs:enumeration value="1884"/>
+			<xs:enumeration value="1886"/>
+			<xs:enumeration value="1887"/>
+			<xs:enumeration value="1888"/>
+			<xs:enumeration value="1890"/>
+			<xs:enumeration value="1901"/>
+			<xs:enumeration value="1902"/>
+			<xs:enumeration value="1903"/>
+			<xs:enumeration value="1904"/>
+			<xs:enumeration value="1971"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="animalKeepingType">
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+			<xs:enumeration value="7"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+
+	<!-- ***************register types******************** -->
+	<xs:simpleType name="personIdType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- ************ other types ****************** -->
+	<xs:simpleType name="Quantity">
+		<xs:restriction base="xs:nonNegativeInteger"/>
+	</xs:simpleType>
+	<xs:simpleType name="NST">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GVE">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="QuantityDecimal">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AnzahlAK">
+		<xs:restriction base="xs:nonNegativeInteger">
+			<xs:maxInclusive value="999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CHF">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CHF5negative">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CHF5">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:fractionDigits value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="M2">
+		<xs:restriction base="xs:nonNegativeInteger"/>
+	</xs:simpleType>
+	<xs:simpleType name="M">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="JN">
+		<xs:restriction base="xs:boolean"/>
+	</xs:simpleType>
+	<xs:simpleType name="Jahr">
+		<xs:restriction base="xs:gYear"/>
+	</xs:simpleType>
+	<xs:simpleType name="Obstjahr">
+		<xs:restriction base="xs:gYear">
+			<xs:minInclusive value="1960"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Datum">
+		<xs:restriction base="xs:date"/>
+	</xs:simpleType>
+	<xs:simpleType name="Erstelldatum">
+		<xs:restriction base="xs:dateTime"/>
+	</xs:simpleType>
+	<xs:simpleType name="Tage">
+		<xs:restriction base="xs:nonNegativeInteger"/>
+	</xs:simpleType>
+
+	<!-- placeholder so that we can validate -->
+	<xs:complexType name="localUnitIdentifier">
+	</xs:complexType>
+
+</xs:schema>
