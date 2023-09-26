@@ -1,4 +1,4 @@
-# eCH-0266: Agrardaten -- Tiere
+# eCH-0266: Agrardaten -- Nutztierhaltung
 
 This is the repository for technical artefacts related to this specification.
 Primarily, this repo contains:
