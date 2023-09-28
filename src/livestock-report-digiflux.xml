@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<previousYearLivestockSummaryReportType>
+    <contributionYear>2022</contributionYear>
+    <reportDate>2023-09-23</reportDate>
+    <mainLocalUnit>A84738264</mainLocalUnit>
+    <surveyLocalUnit>A84738265</surveyLocalUnit>
+    <responsiblePerson>
+        <id>1234</id>
+        <sourceSystemId>eIAM</sourceSystemId>
+    </responsiblePerson>
+    <livestockReport status="original">
+        <dataSource>ANIMAL_TRACING</dataSource>
+        <surveyLocalUnitDetail>
+            <animalCategory>sheep</animalCategory>
+            <declarationDayQuantity>1234</declarationDayQuantity>
+            <quantity>98</quantity>
+            <livestockUnit>1123</livestockUnit>
+            <durationSum>1234</durationSum>
+            <absences>
+                <absence>
+                    <reason>Pensionsvieh</reason>
+                    <quantity>17</quantity>
+                </absence>
+                <absence>
+                    <reason>Alpung</reason>
+                    <quantity>12</quantity>
+                </absence>
+            </absences>
+        </surveyLocalUnitDetail>
+        <surveyLocalUnitDetail>
+            <animalCategory>cattle</animalCategory>
+            <declarationDayQuantity>1234</declarationDayQuantity>
+            <quantity>98</quantity>
+            <livestockUnit>1123</livestockUnit>
+            <durationSum>1234</durationSum>
+            <absences>
+                <absence>
+                    <reason>Pensionsvieh</reason>
+                    <quantity>17</quantity>
+                </absence>
+                <absence>
+                    <reason>Alpung</reason>
+                    <quantity>12</quantity>
+                </absence>
+            </absences>
+        </surveyLocalUnitDetail>
+    </livestockReport>
+
+
+</previousYearLivestockSummaryReportType>
