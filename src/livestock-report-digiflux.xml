@@ -92,7 +92,7 @@
                 <declarationDayQuantity>1234</declarationDayQuantity>
                 <quantity>98</quantity>
                 <livestockUnit>1123</livestockUnit>
-                <durationSumInDays>1234</durationSumInDays>  <
+                <durationSumInDays>1234</durationSumInDays>
                 <absences>
                     <absence>
                         <reason>GENERAL_ABSENCE</reason>
