@@ -6,6 +6,7 @@
     <surveyFarmId>A84738265</surveyFarmId>   <!-- 0261:localUnit:id-->
 
     <livestockData> <!-- Cardinality 1 - 2; 1 for ANIMAL_TRACING, 1 for SELF_REPORTED -->
+        <!-- following could be an attribute of the above-->
         <dataSource>
             ANIMAL_TRACING <!-- enum: ANIMAL_TRACING, SELF_REPORTED -->
             <state>
@@ -13,7 +14,7 @@
                 ORIGINAL  <!-- enum:   ORIGINAL | CORRECTED | NA -->
             </state>
         </dataSource>
-        <dataForAnimalCategory> <!-- 1 - n -->
+        <livestockDataDetail> <!-- 1 - n -->
             <animalCategory>sheep</animalCategory>  <!--	animalCategoryStructuralType -->
             <declarationDayQuantity>1234</declarationDayQuantity> <!-- nonNegativeInteger -->
             <quantity>98</quantity>  <!-- decimal, 4 decimals, min 0 -->
@@ -23,14 +24,14 @@
                 <absence>  <!-- 1-n -->
                     <!-- enum: ALPINE_PASTURING (or TRANSHUMANCE?), GENERAL_ABSENCE, AGISTMENT: de= ALPUNG, ABWESENHEIT, PENSIONSVIEH -->
                     <reason>GENERAL_ABSENCE</reason>
-                    <quantity>17</quantity>  <!-- nonNegativeInteger -->
+                    <quantity>17</quantity>  <!-- nonNegativeInteger : naming suggestion: animalsPresent -->
                 </absence>
                 <absence>
                     <reason>ALPINE_PASTURING</reason>
                     <quantity>12</quantity>
                 </absence>
             </absences>
-        </dataForAnimalCategory>
+        </livestockDataDetail>
         <surveyLocalUnitDetail>
             <animalCategory>cattle</animalCategory>
             <declarationDayQuantity>1234</declarationDayQuantity>
