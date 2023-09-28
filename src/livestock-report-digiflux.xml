@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<previousYearLivestockSummaryReportType>
-    <contributionYear>2022</contributionYear>
-    <reportDate>2023-09-23</reportDate>
-    <mainLocalUnit>A84738264</mainLocalUnit>
-    <surveyLocalUnit>A84738265</surveyLocalUnit>
-    <responsiblePerson>
-        <id>1234</id>
-        <sourceSystemId>eIAM</sourceSystemId>
-    </responsiblePerson>
-    <livestockReport status="original">
-        <dataSource>ANIMAL_TRACING</dataSource>
-        <surveyLocalUnitDetail>
-            <animalCategory>sheep</animalCategory>
-            <declarationDayQuantity>1234</declarationDayQuantity>
-            <quantity>98</quantity>
-            <livestockUnit>1123</livestockUnit>
-            <durationSum>1234</durationSum>
-            <absences>
-                <absence>
-                    <reason>Pensionsvieh</reason>
-                    <quantity>17</quantity>
+<livestockSummeryReport>
+    <contributionYear>2022</contributionYear>  <!-- xs:gYear -->
+    <reportDate>2023-09-23</reportDate>        <!-- xs:date -->
+    <surveyFarmId>A84738265</surveyFarmId>   <!-- 0261:localUnit:id-->
+
+    <livestockData> <!-- Cardinality 1 - 2; 1 for ANIMAL_TRACING, 1 for SELF_REPORTED -->
+        <dataSource>
+            ANIMAL_TRACING <!-- enum: ANIMAL_TRACING, SELF_REPORTED -->
+            <state>
+                <!-- if source ANIMAL_TRACIN, must be ORIGINAL or CORRECTED, otherwise NA -->
+                ORIGINAL  <!-- enum:   ORIGINAL | CORRECTED | NA -->
+            </state>
+        </dataSource>
+        <dataForAnimalCategory> <!-- 1 - n -->
+            <animalCategory>sheep</animalCategory>  <!--	animalCategoryStructuralType -->
+            <declarationDayQuantity>1234</declarationDayQuantity> <!-- nonNegativeInteger -->
+            <quantity>98</quantity>  <!-- decimal, 4 decimals, min 0 -->
+            <livestockUnit>1123</livestockUnit>  <!-- decimal, 4 decimals, min 0 -->
+            <durationSumInDays>1234</durationSumInDays>  <!-- nonNegativeInteger -->
+            <absences>   <!-- 0-1 -->
+                <absence>  <!-- 1-n -->
+                    <!-- enum: ALPINE_PASTURING (or TRANSHUMANCE?), GENERAL_ABSENCE, AGISTMENT: de= ALPUNG, ABWESENHEIT, PENSIONSVIEH -->
+                    <reason>GENERAL_ABSENCE</reason>
+                    <quantity>17</quantity>  <!-- nonNegativeInteger -->
                 </absence>
                 <absence>
-                    <reason>Alpung</reason>
+                    <reason>ALPINE_PASTURING</reason>
                     <quantity>12</quantity>
                 </absence>
             </absences>
-        </surveyLocalUnitDetail>
+        </dataForAnimalCategory>
         <surveyLocalUnitDetail>
             <animalCategory>cattle</animalCategory>
             <declarationDayQuantity>1234</declarationDayQuantity>
@@ -45,7 +48,7 @@
                 </absence>
             </absences>
         </surveyLocalUnitDetail>
-    </livestockReport>
+    </livestockData>
 
 
-</previousYearLivestockSummaryReportType>
+</livestockSummeryReport>
