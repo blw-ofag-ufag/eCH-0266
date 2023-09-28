@@ -30,6 +30,7 @@
 *.gsh text
 *.puml text
 *.drawio text
+*.xpr  text
 
 
 # These files are binary and should be left untouched
