@@ -1,55 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<livestockSummeryReport>
-    <contributionYear>2022</contributionYear>  <!-- xs:gYear -->
+<livestockSummaryReport>
+
+    <!-- Beitragsjahr bzw. das Jahr, in welchem die Daten erhoben wurden. -->
+    <contributionYear>2022</contributionYear>  <!-- Beitragsjahr  xs:gYear -->
     <reportDate>2023-09-23</reportDate>        <!-- xs:date -->
-    <surveyFarmId>A84738265</surveyFarmId>   <!-- 0261:localUnit:id-->
+    <!-- Der Bericht einer individuellen localUnit -->
+    <individualFarmReport>  <!-- 1 - n, 1 pro localUnitId -->
+        <localUnit>A84738265</localUnit>   <!-- 0261:localUnit:id -->
+        <!-- digiFlux Anja/Ryan  should the cardinality be 1?-->
+        <livestockData> <!-- Cardinality 1 - 3, i.e. 1 for each possible dataSource -->
+            <dataSource>
+                ANIMAL_TRACING_ORIGINAL <!-- enum: ANIMAL_TRACING_ORIGINAL, ANIMAL_TRACING_CORRECTED, SELF_DECLARED -->
+            </dataSource>
+            <livestockDataDetail> <!-- 1 - n -->
+                <animalCategory>1234</animalCategory>  <!--	animalCategoryStructuralType:id -->
+                <!-- Enthält den Bestand der Tierkategorie am Stichtag. -->
+                <declarationDayQuantity>1234</declarationDayQuantity> <!-- nonNegativeInteger -->
+                <!-- Die Anzahl der Tiere auf dem genannten Betrieb -->
+                <quantity>98</quantity>  <!-- decimal, 4 decimals, min 0 -->
+                <!-- Die Anzahl GVE auf dem Betrieb -->
+                <livestockUnit>1123</livestockUnit>  <!-- decimal, 4 decimals, min 0 -->
+                <!-- Anzahl Tiertage auf dem Betrieb inklusive Aufenthalten an Ausstellungen, Tierklinik -->
+                <!-- Anja/Ryan: Ausstellung, Tierklinik Beschreibung korrekt? -->
+                <durationSumInDays>1234</durationSumInDays>  <!-- nonNegativeInteger -->
+                <absences>   <!-- 0-1 -->
+                    <absence>  <!-- 1-3 -->
+                        <!-- enum: ALPINE_PASTURING (or TRANSHUMANCE?), GENERAL_ABSENCE, AGISTMENT: de= ALPUNG, ABWESENHEIT, PENSIONSVIEH -->
+                        <reason>GENERAL_ABSENCE</reason>
+                        <!-- Anzahl Tiere abwesend -->
+                        <quantity>8</quantity>  <!-- nonNegativeInteger -->
+                        <!-- Anzahl Tage Abwesenheit -->
+                        <durationSumInDays>17</durationSumInDays>  <!-- nonNegativeInteger : naming suggestion: animalsPresent -->
+                    </absence>
+                    <absence>
+                        <reason>ALPINE_PASTURING</reason>
+                        <quantity>2</quantity>  <!-- nonNegativeInteger -->
+                        <durationSumInDays>12</durationSumInDays>
+                    </absence>
+                </absences>
+            </livestockDataDetail>
+            <livestockDataDetail> <!-- 1 - n -->
+                <animalCategory>2345</animalCategory>  <!--	animalCategoryStructuralType:id -->
+                <declarationDayQuantity>1234</declarationDayQuantity> <!-- nonNegativeInteger -->
+                <quantity>98</quantity>  <!-- decimal, 4 decimals, min 0 -->
+                <livestockUnit>1123</livestockUnit>  <!-- decimal, 4 decimals, min 0 -->
+                <durationSumInDays>1234</durationSumInDays>  <!-- nonNegativeInteger -->
+                <absences>   <!-- 0-1 -->
+                    <absence>  <!-- 1-3 -->
+                        <!-- enum: ALPINE_PASTURING (or TRANSHUMANCE?), GENERAL_ABSENCE, AGISTMENT: de= ALPUNG, ABWESENHEIT, PENSIONSVIEH -->
+                        <reason>GENERAL_ABSENCE</reason>
+                        <quantity>8</quantity>  <!-- nonNegativeInteger -->
+                        <durationSumInDays>17
+                        </durationSumInDays>  <!-- nonNegativeInteger : naming suggestion: animalsPresent -->
+                    </absence>
+                    <absence>
+                        <reason>ALPINE_PASTURING</reason>
+                        <quantity>2</quantity>  <!-- nonNegativeInteger -->
+                        <durationSumInDays>12</durationSumInDays>
+                    </absence>
+                </absences>
+            </livestockDataDetail>
+        </livestockData>
 
-    <livestockData> <!-- Cardinality 1 - 2; 1 for ANIMAL_TRACING, 1 for SELF_REPORTED -->
-        <!-- following could be an attribute of the above-->
-        <dataSource>
-            ANIMAL_TRACING <!-- enum: ANIMAL_TRACING, SELF_REPORTED -->
-            <state>
-                <!-- if source ANIMAL_TRACIN, must be ORIGINAL or CORRECTED, otherwise NA -->
-                ORIGINAL  <!-- enum:   ORIGINAL | CORRECTED | NA -->
-            </state>
-        </dataSource>
-        <livestockDataDetail> <!-- 1 - n -->
-            <animalCategory>sheep</animalCategory>  <!--	animalCategoryStructuralType -->
-            <declarationDayQuantity>1234</declarationDayQuantity> <!-- nonNegativeInteger -->
-            <quantity>98</quantity>  <!-- decimal, 4 decimals, min 0 -->
-            <livestockUnit>1123</livestockUnit>  <!-- decimal, 4 decimals, min 0 -->
-            <durationSumInDays>1234</durationSumInDays>  <!-- nonNegativeInteger -->
-            <absences>   <!-- 0-1 -->
-                <absence>  <!-- 1-n -->
-                    <!-- enum: ALPINE_PASTURING (or TRANSHUMANCE?), GENERAL_ABSENCE, AGISTMENT: de= ALPUNG, ABWESENHEIT, PENSIONSVIEH -->
-                    <reason>GENERAL_ABSENCE</reason>
-                    <quantity>17</quantity>  <!-- nonNegativeInteger : naming suggestion: animalsPresent -->
-                </absence>
-                <absence>
-                    <reason>ALPINE_PASTURING</reason>
-                    <quantity>12</quantity>
-                </absence>
-            </absences>
-        </livestockDataDetail>
-        <surveyLocalUnitDetail>
-            <animalCategory>cattle</animalCategory>
-            <declarationDayQuantity>1234</declarationDayQuantity>
-            <quantity>98</quantity>
-            <livestockUnit>1123</livestockUnit>
-            <durationSum>1234</durationSum>
-            <absences>
-                <absence>
-                    <reason>Pensionsvieh</reason>
-                    <quantity>17</quantity>
-                </absence>
-                <absence>
-                    <reason>Alpung</reason>
-                    <quantity>12</quantity>
-                </absence>
-            </absences>
-        </surveyLocalUnitDetail>
-    </livestockData>
+        <livestockData>
+            <dataSource>
+                ANIMAL_TRACING_CORRECTED
+            </dataSource>
+            <livestockDataDetail>
+                <animalCategory>1234</animalCategory>
+                <declarationDayQuantity>1234</declarationDayQuantity>
+                <quantity>98</quantity>  <!-- decimal, 4 decimals, min 0 -->
+                <livestockUnit>1123</livestockUnit>  <!-- decimal, 4 decimals, min 0 -->
+                <durationSumInDays>1234</durationSumInDays>  <!-- nonNegativeInteger -->
+                <absences>
+                    <absence>
+                        <reason>GENERAL_ABSENCE</reason>
+                        <quantity>8</quantity>
+                        <durationSumInDays>17
+                        </durationSumInDays>
+                    </absence>
+                    <absence>
+                        <reason>ALPINE_PASTURING</reason>
+                        <quantity>2</quantity>
+                        <durationSumInDays>12</durationSumInDays>
+                    </absence>
+                </absences>
+            </livestockDataDetail>
+            <livestockDataDetail>
+                <animalCategory>2345</animalCategory>
+                <declarationDayQuantity>1234</declarationDayQuantity>
+                <quantity>98</quantity>
+                <livestockUnit>1123</livestockUnit>
+                <durationSumInDays>1234</durationSumInDays>  <
+                <absences>
+                    <absence>
+                        <reason>GENERAL_ABSENCE</reason>
+                        <quantity>8</quantity>
+                        <durationSumInDays>17
+                        </durationSumInDays>
+                    </absence>
+                    <absence>
+                        <reason>ALPINE_PASTURING</reason>
+                        <quantity>2</quantity>
+                        <durationSumInDays>12</durationSumInDays>
+                    </absence>
+                </absences>
+            </livestockDataDetail>
+        </livestockData>
 
 
-</livestockSummeryReport>
+        <livestockData>
+            <dataSource>
+                SELF_DECLARED
+            </dataSource>
+            <livestockDataDetail>
+                <animalCategory>1234</animalCategory>
+                <declarationDayQuantity>1234</declarationDayQuantity>
+                <quantity>98</quantity>
+                <livestockUnit>1123</livestockUnit>
+                <durationSumInDays>1234</durationSumInDays>
+                <absences>
+                    <absence>
+                        <reason>GENERAL_ABSENCE</reason>
+                        <quantity>8</quantity>
+                        <durationSumInDays>17
+                        </durationSumInDays>
+                    </absence>
+                    <absence>
+                        <reason>ALPINE_PASTURING</reason>
+                        <quantity>2</quantity>
+                        <durationSumInDays>12</durationSumInDays>
+                    </absence>
+                </absences>
+            </livestockDataDetail>
+            <livestockDataDetail>
+                <animalCategory>2345</animalCategory>
+                <declarationDayQuantity>1234</declarationDayQuantity>
+                <quantity>98</quantity>
+                <livestockUnit>1123</livestockUnit>
+                <durationSumInDays>1234</durationSumInDays>
+                <absences>
+                    <absence>
+                        <reason>GENERAL_ABSENCE</reason>
+                        <quantity>8</quantity>
+                        <durationSumInDays>17
+                        </durationSumInDays>
+                    </absence>
+                    <absence>
+                        <reason>ALPINE_PASTURING</reason>
+                        <quantity>2</quantity>
+                        <durationSumInDays>12</durationSumInDays>
+                    </absence>
+                </absences>
+            </livestockDataDetail>
+        </livestockData>
+    </individualFarmReport>
+
+    <!-- further farms here -->
+
+</livestockSummaryReport>
