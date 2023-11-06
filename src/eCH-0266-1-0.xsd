@@ -1013,7 +1013,7 @@ Datum				Version				Autor
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="summeringInlandDetails" type="eCH-0266:summeringInlandDetailsType " minOccurs="0">
+            <xs:element name="summeringInlandDetails" type="eCH-0266:summeringInlandDetailsType" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation xml:lang="de">
                         Dieser Knoten enthält die TVD-Daten zur
