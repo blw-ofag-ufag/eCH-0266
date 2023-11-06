@@ -4,15 +4,17 @@ Datum				Version				Autor
 *********************************************
 2023-09-29			Entwurf			Stl
 -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:eCH-0108="http://www.ech.ch/xmlns/eCH-0108/7"
-           xmlns:eCH-0261="http://www.ech.ch/xmlns/eCH-0261/1"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:eCH-0266="http://www.ech.ch/xmlns/eCH-0266/1"
+           xmlns:eCH-0261="http://www.ech.ch/xmlns/eCH-0261/1"
+           xmlns:eCH-0108="http://www.ech.ch/xmlns/eCH-0108/7"
            targetNamespace="http://www.ech.ch/xmlns/eCH-0266/1"
            elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
     <xs:annotation>
         <xs:documentation xml:lang="de">Nutztierhaltung - Entwurf, Stand 29.09.2023</xs:documentation>
     </xs:annotation>
-    <xs:import namespace="http://www.ech.ch/xmlns/eCH-0261/1" schemaLocation="../../eCH-0266/src/eCH-0266-1-0.xsd"/>
+    <xs:import namespace="http://www.ech.ch/xmlns/eCH-0261/1" schemaLocation="../../eCH-0261/src/eCH-0261-1-0.xsd"/>
+    <xs:import namespace="http://www.ech.ch/xmlns/eCH-0108/7" schemaLocation="../../eCH-0261/src/eCH-0108-7-0.xsd"/>
     <!--Hauptdatentypen-->
     <xs:complexType name="individualAnimalType">
         <xs:annotation>
@@ -1011,7 +1013,7 @@ Datum				Version				Autor
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="summeringInlandDetails" type="eCH-0266:summeringInlandDetailsType" minOccurs="0">
+            <xs:element name="summeringInlandDetails" type="eCH-0266:summeringInlandDetailsType " minOccurs="0">
                 <xs:annotation>
                     <xs:documentation xml:lang="de">
                         Dieser Knoten enthält die TVD-Daten zur
@@ -1093,7 +1095,7 @@ Datum				Version				Autor
             </xs:element>
         </xs:sequence>
     </xs:complexType>
-    <xs:complexType name="summeringInlandDetailsType ">
+    <xs:complexType name="summeringInlandDetailsType">
         <xs:annotation>
             <xs:documentation xml:lang="de">Dieses Element enthält die TVD-Daten zur Sömmerung im Inland.
             </xs:documentation>
