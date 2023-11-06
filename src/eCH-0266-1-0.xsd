@@ -1277,7 +1277,30 @@ Datum				Version				Autor
 			<xs:choice>
 				<xs:element name="individualAnimal" type="eCH-0266:individualAnimalType"/>
 				<xs:element name="" type="eCH-0266:animalGroupType"/>
-				<xs:element name="" type="eCH-0266:animalGroupType"/>
+				<xs:element name="" type="eCH-0266:animalCategoryPRIFType"/>
+				<xs:element name="" type="eCH-0266:ageRestrictionType"/>
+				<xs:element name="" type="eCH-0266:animalCategoryStructuralType"/>
+				<xs:element name="" type="eCH-0266:animalStockType"/>
+				<xs:element name="" type="eCH-0266:animalWelfareContributionType"/>
+				<xs:element name="" type="eCH-0266:biologicalSexType"/>
+				<xs:element name="" type="eCH-0266:summeringAbroadDetailsType"/>
+				<xs:element name="" type="eCH-0266:zoologicalAnimalType"/>
+				<xs:element name="" type="eCH-0266:utilisationType"/>
+				<xs:element name="" type="eCH-0266:rotationTypeType"/>
+				<xs:element name="" type="eCH-0266:taxonomyAuthorityType"/>
+				<xs:element name="" type="eCH-0266:ageRestrictionType"/>
+				<xs:element name="" type="eCH-0266:lifeStageType"/>
+				<xs:element name="" type="eCH-0266:detentionFormType"/>
+				<xs:element name="" type="eCH-0266:nutritientNeedOrExcretionType"/>
+				<xs:element name="" type="eCH-0266:milkProductionReportType"/>
+				<xs:element name="" type="eCH-0266:milkUreaReportType"/>
+				<xs:element name="" type="eCH-0266:previousYearLivestockSummaryReportType"/>
+				<xs:element name="" type="eCH-0266:animalStockType"/>
+				<xs:element name="" type="eCH-0266:livestockReportedViaAnimalTracingFinalType"/>
+				<xs:element name="" type="eCH-0266:livestockReportViaAnimalTracingOriginalType"/>
+				<xs:element name="" type="eCH-0266:summeringAbroadDetailsType"/>
+				<xs:element name="" type="eCH-0266:summeringInlandDetailsType "/>
+				<xs:element name="" type="eCH-0266:selfReportedLivestockType"/>
 			</xs:choice>
 		</xs:complexType>
 	</xs:element>
