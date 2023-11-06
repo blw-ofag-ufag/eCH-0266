@@ -4,1306 +4,1362 @@ Datum				Version				Autor
 *********************************************
 2023-09-29			Entwurf			Stl
 -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:eCH-0108="http://www.ech.ch/xmlns/eCH-0108/7" xmlns:eCH-0261="http://www.ech.ch/xmlns/eCH-0261/1" xmlns:eCH-0266="http://www.ech.ch/xmlns/eCH-0266/1" targetNamespace="http://www.ech.ch/xmlns/eCH-0266/1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
-	<xs:annotation>
-		<xs:documentation xml:lang="de">Nutztierhaltung - Entwurf, Stand 29.09.2023</xs:documentation>
-	</xs:annotation>
-	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0261/1" schemaLocation="../../eCH-0266/src/eCH-0266-1-0.xsd"/>
-	<!--Hauptdatentypen-->
-	<xs:complexType name="individualAnimalType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Einzeltier</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="id" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Identifikator</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="name" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Name des Tiers </xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:token">
-						<xs:maxLength value="50"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="utilisation" type="eCH-0266:utilisationType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="zoologicallAnimal" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Ein Tier aus einer Liste gemäss zoologischer Taxonomie, d.h. nicht aus einer verordungsbasierten Liste.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="animalCategoryPRIF" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Tierkategorie nach Grud</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="animalCategoryStructural" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Tierkategorie nach Strukturdaten</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="dateOfBirth" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Geburt</xs:documentation>
-				</xs:annotation>
-				<xs:complexType>
-					<xs:choice>
-						<xs:element name="yearMonthDay" type="xs:date"/>
-						<xs:element name="yearMonth" type="xs:gYearMonth"/>
-					</xs:choice>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="dateOfDeath" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Tod</xs:documentation>
-				</xs:annotation>
-				<xs:complexType>
-					<xs:choice>
-						<xs:element name="yearMonthDay" type="xs:date"/>
-						<xs:element name="yearMonth" type="xs:gYearMonth"/>
-					</xs:choice>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="birthWeightInG" type="xs:decimal" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Geburtsgewicht in Gramm</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="livingWeightInG" type="xs:decimal" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Lebendgewicht in Gramm</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="slaughterWeightInG" type="xs:decimal" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Schlachtgewicht in Gramm</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="location" type="eCH-0108:localIdType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Standort</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:choice minOccurs="0">
-				<xs:element name="owner" type="eCH-0108:uidType">
-					<xs:annotation>
-						<xs:documentation xml:lang="de">Eigentümer (UID)</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-				<xs:element name="ownerPerson" type="eCH-0261:personIdentifierType">
-					<xs:annotation>
-						<xs:documentation xml:lang="de">Eigentümer (Personenidentifikator für Personen ohne UID)</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-			</xs:choice>
-			<xs:element name="biologicalSex" type="eCH-0266:biologicalSexType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Geschlecht</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="timeStamp" type="xs:date">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Abrufdatum des Datensatzes</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="animalGroupType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Tiergruppe</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="id" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Identifikator</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:choice>
-				<xs:element name="individualAnimal" type="eCH-0261:identifierType" maxOccurs="unbounded" minOccurs="0">
-					<xs:annotation>
-						<xs:documentation xml:lang="de">Einzeltiere</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-				<xs:sequence>
-					<xs:element name="animalCategoryPRIF" type="eCH-0261:identifierType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation xml:lang="de">Tierkategorie: Werden keine Einzeltiere angegeben, muss eine Kategorie gemäss GRUD und/oder eine Kategorie gemäss Strukturdatenerhebung (Merkmalskatalog) angegeben werden.</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="animalCategoryStructural" type="eCH-0261:identifierType" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation xml:lang="de">Tierkategorie: Werden keine Einzeltiere angegeben, muss eine Kategorie gemäss GRUD und/oder eine Kategorie gemäss Strukturdatenerhebung (Merkmalskatalog) angegeben werden.</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-				</xs:sequence>
-			</xs:choice>
-			<xs:element name="quantity" type="xs:integer">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Anzahl</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="utilisation" type="eCH-0266:utilisationType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="sumLivingWeightInG" type="xs:integer" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Summe Lebendgewicht in Gramm</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="sumSlaughterWeightInG" type="xs:integer" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Summe Schlachtgewicht in Gramm</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:choice minOccurs="0">
-				<xs:element name="owner" type="eCH-0108:uidType">
-					<xs:annotation>
-						<xs:documentation xml:lang="de">Eigentümer (UID)</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-				<xs:element name="ownerPerson" type="eCH-0261:personIdentifierType">
-					<xs:annotation>
-						<xs:documentation xml:lang="de">Eigentümer (Personenidentifikator für Personen ohne UID)</xs:documentation>
-					</xs:annotation>
-				</xs:element>
-			</xs:choice>
-			<xs:element name="location" type="eCH-0108:localIdType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Standort</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="detentionForm" type="eCH-0261:identifierType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Haltungsform nach Merkblatt 6.3 Merkmalskatalog</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="parentGroup" type="eCH-0261:identifierType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Übergeordnete Gruppe: Eine Tiergruppe kann Teil einer anderen Tiergruppe sein. In diesem Feld kann die ID der übergeordneten Gruppe angegeben werden.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="timeStamp" type="xs:date">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Abrufdatum des Datensatzes</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="animalCategoryPRIFType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">GRUD-Tierkategorie</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="id" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Identifikator</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="descriptor" type="eCH-0261:descriptorType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Bezeichnung</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="utilisation" type="eCH-0266:utilisationType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="usedInSuisseBilanz" type="xs:boolean">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Angabe, ob die Kategorie in der SuisseBilanz verwendet wird</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="nutrientRequirement" type="eCH-0266:nutritientNeedOrExcretionType" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Nährstoffbedarf</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="nutrientAccumulation" type="eCH-0266:nutritientNeedOrExcretionType" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Nährstoffanfall</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="zoologicalAnimal" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Eine Tierkategorie aus einer Liste gemäss zoologischer Taxonomie, d.h. nicht aus einer verordungsbasierten Liste.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="animalCategoryStructuralType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Tierkategorien Strukturdaten</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="id" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Identifikator</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="descriptor" type="eCH-0261:descriptorType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Bezeichnung</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="zoologicalAnimal" type="eCH-0261:identifierType" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="animalCategoryPRIF" type="eCH-0261:identifierType" minOccurs="0" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Angabe, ob die Kategorie in der SuisseBilanz verwendet wird</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="biologicalSex" type="eCH-0266:biologicalSexType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Nährstoffbedarf</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="ageRestriction" type="eCH-0261:identifierType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Nährstoffanfall</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="offspring" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Angabe, ob Nachkommen existieren (ja, nein)</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:token">
-						<xs:enumeration value="YES"/>
-						<xs:enumeration value="NO"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="lifeStage" type="eCH-0266:lifeStageType" minOccurs="0" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Eine Tierkategorie aus einer Liste gemäss zoologischer Taxonomie, d.h. nicht aus einer verordungsbasierten Liste.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="synonym" type="eCH-0261:descriptorType" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="rotationCount" type="xs:positiveInteger" minOccurs="0"/>
-			<xs:element name="rotationType" type="eCH-0266:rotationTypeType"/>
-			<xs:element name="ethoCategory" type="eCH-0266:animalWelfareContributionType" minOccurs="0"/>
-			<xs:element name="standardLabourUnitProLivestockUnit">
-				<xs:simpleType>
-					<xs:restriction base="xs:decimal">
-						<xs:minInclusive value="0"/>
-						<xs:fractionDigits value="4"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="livestockUnitFactor">
-				<xs:simpleType>
-					<xs:restriction base="xs:decimal">
-						<xs:minInclusive value="0"/>
-						<xs:fractionDigits value="4"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="detentionForm" type="eCH-0261:identifierType" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="zoologicalAnimalType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Zoologische Klassifizierung eines Tieres</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="code">
-				<xs:simpleType>
-					<xs:restriction base="xs:token">
-						<xs:maxLength value="50"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="taxonomyAuthority">
-				<xs:simpleType>
-					<xs:restriction base="xs:token">
-						<xs:maxLength value="50"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:simpleType name="biologicalSexType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Geschlecht</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:token">
-			<xs:enumeration value="M">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Männlich</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="F">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Weiblich</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="M_OR_F">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Männlich oder weiblich: In einigen Listen sind Tiere aufgeführt, die entweder weiblich oder männlich sein können.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="UNDEFINED">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Undefiniert: Die Angabe des Geschlechts ist möglicherweise wichtig, wurde aber für den jeweiligen Eintrag noch nicht festgelegt.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="NA">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Nicht anwendbar: Die Angabe des Geschlechts ist nicht relevant für den jeweiligen Eintrag.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="utilisationType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:token">
-			<xs:enumeration value="REARING">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Aufzucht</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="BREEDING">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Zucht</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="FATTENING">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Mast</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="MILKING">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Melkung</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="HATCH_LAYLINE">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Bruteiproduktion für Legelinien</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="ORNAMENTAL">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Zier</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="HOBBY">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Hobby</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="UNDEFINED">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Nicht definiert</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="rotationTypeType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Umtriebsart</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:token">
-			<xs:enumeration value="PER_YEAR">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Umtriebe bemessen pro Jahr</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="PER_LOCATION">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Umtriebe bemessen pro Standort</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="PER_YEAR_AND_LOCATION">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Umtriebe bemessen pro Jahr und Standort</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:complexType name="taxonomyAuthorityType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Fachquelle</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="item" type="eCH-0261:enumeratedItemType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Eintrag aus einer Liste (Identifikator, Be-zeichnung, Beschreibung).</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="ageRestrictionType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Alterseinschränkung</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="id" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Identifikator</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="descriptor" type="eCH-0261:descriptorType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Bezeichnung</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="lowerLimit" type="xs:integer" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Unteres Alterslimit</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="lowerOperator" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Operator für das untere Alterslimit</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:token">
-						<xs:enumeration value="&lt;">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Kleiner als</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="&lt;=">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Kleiner gleich</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="=">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Gleich</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="!=">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Ungleich</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="&gt;=">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Grösser gleich</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="&gt;">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Grösser als</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="lowerUnit" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Einheit für das untere Alterslimit</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:token">
-						<xs:enumeration value="D">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Tag(e)</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="M">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Monat(e)</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="Y">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Jahr(e)</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="upperLimit" type="xs:integer" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Oberes Alterslimit</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="upperOperator" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Operator für das obere Alterslimit</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:token">
-						<xs:enumeration value="&lt;">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Kleiner als</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="&lt;=">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Kleiner gleich</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="=">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Gleich</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="!=">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Ungleich</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="&gt;=">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Grösser gleich</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="&gt;">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Grösser als</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="upperUnit" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Einheit für das obere Alterslimit</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:token">
-						<xs:enumeration value="D">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Tag(e)</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="M">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Monat(e)</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="Y">
-							<xs:annotation>
-								<xs:documentation xml:lang="de">Jahr(e)</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="animalWelfareContributionType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Tierwohlbeiträge</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="id" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Identifikator</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="descriptor" type="eCH-0261:descriptorType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Bezeichnung</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="zoologicalAnimal" type="eCH-0261:identifierType" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Ein Tier aus einer Liste gemäss zoologischer Taxonomie, d.h. nicht aus einer verordungsbasierten Liste.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:simpleType name="lifeStageType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Alterskategorie</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:token">
-			<xs:enumeration value="ADULT">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Ausgewachsen oder entwickelt.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="YOUTH">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Jungtier. Noch nicht vollständig ausgewachsen oder entwi-ckelt (Adoleszenz).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="INFANT">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Frühstadium. Z.B. Küken.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="ANY">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Wird verwendet, wenn eine Eigenschaft auf alle Alterskategorien zutrifft.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:complexType name="detentionFormType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Haltungsform</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="id" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Identifikator</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="descriptor" type="eCH-0261:descriptorType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Bezeichnung</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="zoologicalAnimal" type="eCH-0261:identifierType" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Ein Tier aus einer Liste gemäss zoologischer Taxonomie, d.h. nicht aus einer verordungsbasierten Liste.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="husbandryCategory" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">ID einer Art der Tierhaltung gemäss eCH-0262</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="nutritientNeedOrExcretionType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Nährstoffbedarf/-ausscheidung</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="id" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Identifikator</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="descriptor" type="eCH-0261:descriptorType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Bezeichnung</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="animalSpecific" type="xs:boolean" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Angabe, ob der Eintrag tierspezifisch ist.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="required" type="xs:boolean" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Angabe, ob die Deklaration der Substanz erforderlich ist.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="substance" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">ID einer Substanz gemäss eCH-0263</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="density" type="xs:decimal" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Raumgewicht</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="quantity">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Menge</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:decimal">
-						<xs:fractionDigits value="2"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="unit" maxOccurs="2">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Einheit</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="eCH-0261:unitType">
-						<xs:enumeration value="%"/>
-						<xs:enumeration value="kg/m3"/>
-						<xs:enumeration value="kg/pc"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="milkUreaReportType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Milchharnstoffwert</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="id" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Identifikator</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="analysisDate" type="xs:date">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Datum der Analyse</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="value" type="eCH-0261:descriptorType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Wert</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="unit">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Einheit (eingeschränkt auf Liter)</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="eCH-0261:unitType">
-						<xs:enumeration value="m3"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="localUnit" type="eCH-0108:localIdType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">BUR-Nr. der zugehörigen lokalen Einheit</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="milkProductionReportType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Milchproduktion</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="id" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Identifikator</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="analysisDate" type="xs:date">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Datum der Analyse</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="value" type="eCH-0261:descriptorType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Wert</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="unit">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Einheit (eingeschränkt auf Liter)</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="eCH-0261:unitType">
-						<xs:enumeration value="m3"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="localUnit" type="eCH-0108:localIdType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">BUR-Nr. der zugehörigen lokalen Einheit</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<!--Livestock-->
-	<xs:complexType name="previousYearLivestockSummaryReportType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de"/>
-			<xs:documentation xml:lang="en"> This defines the animal stock per location and
-				reporting source on year-round facilities. The report is for the previous
-				year vis-à-vis the report date.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="animalStock" maxOccurs="unbounded" type="eCH-0266:animalStockType"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="animalStockType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">
-						Dieses Element enthält alle Daten einer Tierkategorie der 
-						angegebenen lokalen Einheit.
-					</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="contributionYear" type="xs:gYear">
-				<xs:annotation>
-					<xs:documentation xml:lang="de"> Enthält das Jahr, in welche die
-									Daten erhoben wurden. </xs:documentation>
-					<xs:documentation xml:lang="en"> The year for which the data is
-									reported. In practice this will be the year previous to that of
-									the report date. </xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="reportDate" type="xs:date">
-				<xs:annotation>
-					<xs:documentation xml:lang="de"> Enthält das Datum des Berichts bzw.
-									der Datenübertragung. </xs:documentation>
-					<xs:documentation xml:lang="en"> The date on which the report was
-									created or on which the data transmission was effected. </xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="mainLocalUnit" type="eCH-0108:localIdType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">BUR-Nr. der lokalen Einheit.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="surveyLocalUnit">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-									Enthält die kantonale Identifikationsnummer der Betriebsform auf der Stufe, 
-									auf der die sich in diesem Report befindlichen Daten erfasst wurden.
-								</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:token">
-						<xs:maxLength value="50"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="responsiblePerson" type="eCH-0261:personIdentifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-									Reporter and/or representative of the localUnit.
-								</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="animalCategoryStructural" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-									Definiert die Tierkategorie aus der angegebenen Spezifikation.
-								</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:choice>
-				<xs:element name="livestockAnimalTracing" type="eCH-0266:livestockReportedViaAnimalTracingType">
-					<!-- -->
-				</xs:element>
-				<xs:element name="livestockSelfDeclared" type="eCH-0266:selfReportedLivestockType" maxOccurs="unbounded"/>
-			</xs:choice>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="livestockReportedViaAnimalTracingType">
-		<xs:annotation>
-			<xs:documentation xml:lang="en">
-				This node contains contains information regarding
-				cattle, equidae, sheep, goats, and bison. 
-				Do not use if the the animal in question belongs
-				to another category.
-			</xs:documentation>
-			<xs:documentation xml:lang="de">
-				Ce nœud contient les données BDTA pour les bovins, 
-				les équidés, les moutons, les chèvres et les bisons.
-				Il ne peut pas être livré pour les autres catégories 
-				d’animaux
-			</xs:documentation>
-			<xs:documentation xml:lang="de">
-				Enthält die TVD-Daten für Rindvieh,
-				Tiere der Pferdegattung, Schafe, Ziegen und Bisons.
-				Für die anderen Tierkategorien darf dieser Knoten 
-				nicht übermittelt werden
-			</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="animalTracingDataOriginal" type="eCH-0266:livestockReportViaAnimalTracingOriginalType"/>
-			<xs:element name="animalTrackingDataFinal" type="eCH-0266:livestockReportedViaAnimalTracingFinalType"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="livestockReportViaAnimalTracingOriginalType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Dieses Element beschreibt die Originaldaten des Tierbestands aus der TVD.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="quantityTotal" type="xs:nonNegativeInteger">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-						Enthält den gesamten Bestand der Tierkategorie.
-						 (Gezählte Tiertage auf dem Betrieb + Tiertage Sömmerung Inland + Tiertage auf angestammten Sömmerungsbetrieben in der ausländischen Grenzzone) / Tage des Jahres
-						(Summe der Werte aus durationSum + livestockUnkt + quantity ) /365 (bzw. 366 im Falle eines Schaltjahres)
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="livestockUnitTotal">
-				<xs:annotation>
-					<!-- Merkmalskatalog contains information as to how this was calculcated.
-						pg. 19/85. We probably want to expand upon the documentation here. 
-						At the same time, this is a calculated value
-						and it makes me wonder if it should be included in the XSD / Spec 
-						at all! -->
-					<xs:documentation xml:lang="de">
-						Enthält die Summe der Anzahl Grossvieheinheiten auf dem Betrieb 
-						sowie der Sömmerung im Inland und auf 
-						angestammten Sömmerungsbetrieben in der ausländischen Grenzzone.
-					</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:decimal">
-						<xs:fractionDigits value="4"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="durationSumTotal" type="xs:nonNegativeInteger">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-						Enthält die Summe der Tiertage auf dem Betrieb 
-						sowie der Sömmerung im Inland und auf 
-						angestammten Sömmerungsbetrieben in der 
-						ausländischen Grenzzone.
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="surveyFarmDetails" type="eCH-0266:surveyFarmDetailsType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Enthält die TVD-Daten zum Tierbestand auf dem Hauptbetrieb.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="summeringInlandDetails" type="eCH-0266:summeringInlandDetailsType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-						Dieser Knoten enthält die TVD-Daten zur 
-						Sömmerung im Inland.
-						→ Dieser Knoten ist zwingend zu liefern, wenn Tiere 
-						im Inland gesömmert wurden (ohne Bisons).
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="summeringAbroadDetails" type="eCH-0266:summeringAbroadDetailsType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-						Dieser Knoten enthält die TVD-Daten zur 
-						Sömmerung auf angestammten 
-						Sömmerungsbetrieben in der ausländischen 
-						Grenzzone (ohne Bisons).
-						→ Dieser Knoten ist zwingend zu liefern, wenn Tiere 
-						auf angestammten Sömmerungsbetrieben in der 
-						ausländischen Grenzzone gesömmert wurden (ohne 
-						Bisons).
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="surveyFarmDetailsType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Enthält die TVD-Daten zum Tierbestand auf dem Hauptbetrieb.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="declarationDayQuantity" type="xs:nonNegativeInteger">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-									Enthält den Bestand der Tierkategorie am Stichtag. 
-								</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="quantity">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-									Enthält die Anzahl Tiere auf dem Betrieb aus den 
-									TVD-Daten.
-									→ Gezählte Tiertage auf dem Betrieb / Tage des 
-									Jahres (Basisinformation für Nährstoffbilanz)
-									
-								</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:decimal">
-						<xs:fractionDigits value="4"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="livestockUnit">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-									Enthält die Anzahl GVE auf dem Betrieb aus den 
-									TVD-Daten.
-									→ Gezählte Tiertage / Tage des Jahres * GVE-Faktor
-								</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:decimal">
-						<xs:fractionDigits value="4"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="durationSum" type="xs:nonNegativeInteger" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-									Enthält die Anzahl Tiertage auf dem Betrieb aus den 
-									TVD-Daten (inkl. Aufenthalte an Ausstellungen, 
-									Tierklinik).
-									→ Auf der TVD gezählte Aufenthaltstage 
-									(Übernachtungsregel).
-								</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="summeringInlandDetailsType ">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Dieses Element enthält die TVD-Daten zur Sömmerung im Inland.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="livestockUnit">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-									Enthält die Anzahl im Inland gesömmerte GVE aus 
-									den TVD-Daten.
-									→ Gezählte Tiertage der Sömmerung im Inland / 
-									Tage des Jahres * GVE-Faktor
-								</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:decimal">
-						<xs:fractionDigits value="4"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="normedLivestockUnit">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-									Enthält die Anzahl Normalstösse der im Inland 
-									gesömmerten Tiere aus den TVD-Daten.
-									→ Gezählte Tiertage der Sömmerung im Inland
-									* GVE-Faktor / 100.
-								</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:decimal">
-						<xs:fractionDigits value="4"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="durationSum" type="xs:nonNegativeInteger" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-									Enthält die Anzahl Sömmerungstage im Inland aus 
-									den TVD-Daten.
-								</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="summeringAbroadDetailsType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Dieses Element enthält die TVD-Daten zur Sömmerung auf angestammten Sömmerungsbetrieben in der ausländischen Grenzzone.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="livestockUnit">
-				<xs:simpleType>
-					<xs:annotation>
-						<xs:documentation xml:lang="de">
-									Enthält die auf angestammten Sömmerungsbetrieben
-									in der ausländischen Grenzzone gesömmerte GVE 
-									aus den TVD-Daten.
-									→ Gezählte Tiertage der Sömmerung auf 
-									angestammten Sömmerungsbetrieben in der 
-									ausländischen Grenzzone / Tage des Jahres * GVE-Faktor
-								</xs:documentation>
-					</xs:annotation>
-					<xs:restriction base="xs:decimal">
-						<xs:fractionDigits value="4"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="durationSum" type="xs:nonNegativeInteger" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-									Enthält die Anzahl Sömmerungstage auf 
-									angestammten Sömmerungsbetrieben in der 
-									ausländischen Grenzzone aus den TVD-Daten.
-								</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="livestockReportedViaAnimalTracingFinalType">
-		<xs:annotation>
-			<xs:documentation xml:lang="en">
-				Animal tracing data that was corrected by the Canton.
-			</xs:documentation>
-			<!-- reference: we are at page 20 in Merkmalskatalog Edition 2024 -->
-			<xs:documentation xml:lang="de">
-				Enthält die finalen Daten (nach
-				Korrekturen vom Kanton).
-			</xs:documentation>
-			<xs:documentation xml:lang="fr">
-				Contient les données finales (après 
-				corrections du canton)
-			</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<!-- do we want to include calculated fields ??? !!!  -->
-			<xs:element name="quantityTotal" type="xs:nonNegativeInteger">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-						Enthält den gesamten Bestand der Tierkategorie 
-						nach Korrektur Kanton (Tiertage Ganzjahresbetrieb 
-						+ Tiertage Sömmerung Inland + Tiertage 
-						Sömmerung Ausland Angestammt) / Tage des 
-						Jahres.
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="livestockUnitTotal">
-				<xs:simpleType>
-					<xs:annotation>
-						<xs:documentation xml:lang="de">
-						Enthält die Summe der Anzahl Grossvieheinheit auf dem Betrieb 
-						sowie der Sömmerung im Inland und auf 
-						angestammten Sömmerungsbetrieben in der 
-						ausländischen Grenzzone nach Korrektur Kanton.
-					</xs:documentation>
-					</xs:annotation>
-					<xs:restriction base="xs:decimal">
-						<xs:fractionDigits value="4"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="surveyFarmDetails" type="eCH-0266:surveyFarmDetailsType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-						Enthält die TVD-Daten nach 
-						Korrektur Kanton zum Tierbestand auf dem 
-						Hauptbetrieb.
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="summeringInlandDetails" type="eCH-0266:summeringInlandDetailsType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-						Dieser Knoten enthält die TVD-Daten zur 
-						Sömmerung von Rindvieh und Tieren der 
-						Pferdegattung im Inland nach Korrektur Kanton.
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="summeringAbroadDetails" type="eCH-0266:summeringAbroadDetailsType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-						Dieser Knoten enthält die TVD-Daten zur 
-						Sömmerung auf angestammten 
-						Sömmerungsbetrieben in der ausländischen 
-						Grenzzone nach Korrektur Kanton.
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="selfReportedLivestockType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">
-				Dieser Knoten enthält die Daten aus der 
-				Selbstdeklaration. 
-				→ Kann pro Tierkategorie mehrmals übermittelt 
-				werden, falls Tiere unterschiedlich lange gesömmert 
-				wurden.
-				Gibt es nur eine einzige Sömmerungsdauer 
-				(2.1.7.5summeringDuration), wird pro Tierkategorie 
-				nur ein Datensatz mit allen Angaben geliefert. Gibt es 
-				mehrere Sömmerungsdauern, werden mehrere 
-				Datensätze geliefert:
-				• ein Datensatz enthält die Anzahl Tiere am 
-				Stichtag und den Durchschnittswert 
-				(2.1.7.1+2.1.7.2) (als Anzahl gesömmerte 
-				Tiere und Sömmerungsdauer wird 0 
-				geliefert)
-				• weitere Datensätze mit der jeweiligen 
-				Anzahl der gesömmerten Tiere und der 
-				dazugehörenden Sömmerungsdauer 
-				(2.1.7.4+2.1.7.5) (als Anzahl Tiere am 
-				Stichtag und Durchschnittswert wird 0 
-				geliefert)
-			</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="declarationDayQuantity" type="xs:nonNegativeInteger">
-				<xs:annotation>
-					<!-- todo: for me the descriptin is not clear. 
-						Are we reporting animal stock "today" ??  or is this a 
-						reference to another element in this XSD ?? -->
-					<xs:documentation xml:lang="de">
-						Enthält den Bestand der Tierkategorie am Stichtag.
-					</xs:documentation>
-					<xs:documentation xml:lang="fr">
-						Contient le cheptel de la catégorie d’animaux du jour de 
-						référence.
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="averageQuantity" type="xs:nonNegativeInteger">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-						Enthält den Durchschnittsbestand der Tierkategorie 
-						in Stück im Vorjahr.
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="detentionType" type="eCH-0261:identifierType" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-						Enthält die Haltungsform für Schweine und Geflügel 
-						und ist nur für diese Gattungen zwingend. Für andere 
-						Gattungen soll diese Information nicht geliefert 
-						werden.
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="summeringQuantity" type="xs:nonNegativeInteger">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-						Enthält die Anzahl (Stück) der gesömmerten Tiere im 
-						Vorjahrl
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="summeringDuration" type="xs:nonNegativeInteger">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-						Enthält die Sömmerungsdauer im Vorjahr in Anzahl 
-						Tagen.
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<!--Root-Element-->
-	<xs:element name="root">
-		<xs:complexType>
-			<xs:choice>
-				<xs:element name="individualAnimal" type="eCH-0266:individualAnimalType"/>
-				<xs:element name="animalGroup" type="eCH-0266:animalGroupType"/>
-				<xs:element name="animalCategoryPRIF" type="eCH-0266:animalCategoryPRIFType"/>
-				<xs:element name="ageRestriction" type="eCH-0266:ageRestrictionType"/>
-				<xs:element name="animalCategoryStructural" type="eCH-0266:animalCategoryStructuralType"/>
-				<xs:element name="animalStock" type="eCH-0266:animalStockType"/>
-				<xs:element name="animalWelfareContribution" type="eCH-0266:animalWelfareContributionType"/>
-				<xs:element name="biologicalSex" type="eCH-0266:biologicalSexType"/>
-				<xs:element name="summeringAbroadDetails" type="eCH-0266:summeringAbroadDetailsType"/>
-				<xs:element name="zoologicalAnimal" type="eCH-0266:zoologicalAnimalType"/>
-				<xs:element name="utilisation" type="eCH-0266:utilisationType"/>
-				<xs:element name="rotationType" type="eCH-0266:rotationTypeType"/>
-				<xs:element name="taxonomyAuthority" type="eCH-0266:taxonomyAuthorityType"/>
-				<xs:element name="ageRestriction" type="eCH-0266:ageRestrictionType"/>
-				<xs:element name="lifeStage" type="eCH-0266:lifeStageType"/>
-				<xs:element name="detentionForm" type="eCH-0266:detentionFormType"/>
-				<xs:element name="nutritientNeedOrExcretion" type="eCH-0266:nutritientNeedOrExcretionType"/>
-				<xs:element name="milkProductionReport" type="eCH-0266:milkProductionReportType"/>
-				<xs:element name="milkUreaReport" type="eCH-0266:milkUreaReportType"/>
-				<xs:element name="previousYearLivestockSummaryReport" type="eCH-0266:previousYearLivestockSummaryReportType"/>
-				<xs:element name="animalStock" type="eCH-0266:animalStockType"/>
-				<xs:element name="livestockReportedViaAnimalTracingFinal" type="eCH-0266:livestockReportedViaAnimalTracingFinalType"/>
-				<xs:element name="livestockReportViaAnimalTracingOriginal" type="eCH-0266:livestockReportViaAnimalTracingOriginalType"/>
-				<xs:element name="summeringAbroadDetails" type="eCH-0266:summeringAbroadDetailsType"/>
-				<xs:element name="summeringInlandDetailsT" type="eCH-0266:summeringInlandDetailsType "/>
-				<xs:element name="selfReportedLivestock" type="eCH-0266:selfReportedLivestockType"/>
-			</xs:choice>
-		</xs:complexType>
-	</xs:element>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:eCH-0108="http://www.ech.ch/xmlns/eCH-0108/7"
+           xmlns:eCH-0261="http://www.ech.ch/xmlns/eCH-0261/1"
+           xmlns:eCH-0266="http://www.ech.ch/xmlns/eCH-0266/1"
+           targetNamespace="http://www.ech.ch/xmlns/eCH-0266/1"
+           elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+    <xs:annotation>
+        <xs:documentation xml:lang="de">Nutztierhaltung - Entwurf, Stand 29.09.2023</xs:documentation>
+    </xs:annotation>
+    <xs:import namespace="http://www.ech.ch/xmlns/eCH-0261/1" schemaLocation="../../eCH-0266/src/eCH-0266-1-0.xsd"/>
+    <!--Hauptdatentypen-->
+    <xs:complexType name="individualAnimalType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Einzeltier</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Identifikator</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="name" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Name des Tiers</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:maxLength value="50"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="utilisation" type="eCH-0266:utilisationType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="zoologicallAnimal" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Ein Tier aus einer Liste gemäss zoologischer Taxonomie, d.h. nicht
+                        aus einer verordungsbasierten Liste.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="animalCategoryPRIF" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Tierkategorie nach Grud</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="animalCategoryStructural" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Tierkategorie nach Strukturdaten</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="dateOfBirth" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Geburt</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element name="yearMonthDay" type="xs:date"/>
+                        <xs:element name="yearMonth" type="xs:gYearMonth"/>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="dateOfDeath" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Tod</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element name="yearMonthDay" type="xs:date"/>
+                        <xs:element name="yearMonth" type="xs:gYearMonth"/>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="birthWeightInG" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Geburtsgewicht in Gramm</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="livingWeightInG" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Lebendgewicht in Gramm</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="slaughterWeightInG" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Schlachtgewicht in Gramm</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="location" type="eCH-0108:localIdType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Standort</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:choice minOccurs="0">
+                <xs:element name="owner" type="eCH-0108:uidType">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="de">Eigentümer (UID)</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ownerPerson" type="eCH-0261:personIdentifierType">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="de">Eigentümer (Personenidentifikator für Personen ohne UID)
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+            <xs:element name="biologicalSex" type="eCH-0266:biologicalSexType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Geschlecht</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="timeStamp" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Abrufdatum des Datensatzes</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="animalGroupType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Tiergruppe</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Identifikator</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:choice>
+                <xs:element name="individualAnimal" type="eCH-0261:identifierType" maxOccurs="unbounded" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="de">Einzeltiere</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:sequence>
+                    <xs:element name="animalCategoryPRIF" type="eCH-0261:identifierType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="de">Tierkategorie: Werden keine Einzeltiere angegeben, muss eine
+                                Kategorie gemäss GRUD und/oder eine Kategorie gemäss Strukturdatenerhebung
+                                (Merkmalskatalog) angegeben werden.
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="animalCategoryStructural" type="eCH-0261:identifierType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="de">Tierkategorie: Werden keine Einzeltiere angegeben, muss eine
+                                Kategorie gemäss GRUD und/oder eine Kategorie gemäss Strukturdatenerhebung
+                                (Merkmalskatalog) angegeben werden.
+                            </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:choice>
+            <xs:element name="quantity" type="xs:integer">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Anzahl</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="utilisation" type="eCH-0266:utilisationType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="sumLivingWeightInG" type="xs:integer" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Summe Lebendgewicht in Gramm</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="sumSlaughterWeightInG" type="xs:integer" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Summe Schlachtgewicht in Gramm</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:choice minOccurs="0">
+                <xs:element name="owner" type="eCH-0108:uidType">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="de">Eigentümer (UID)</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ownerPerson" type="eCH-0261:personIdentifierType">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="de">Eigentümer (Personenidentifikator für Personen ohne UID)
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+            <xs:element name="location" type="eCH-0108:localIdType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Standort</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="detentionForm" type="eCH-0261:identifierType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Haltungsform nach Merkblatt 6.3 Merkmalskatalog</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="parentGroup" type="eCH-0261:identifierType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Übergeordnete Gruppe: Eine Tiergruppe kann Teil einer anderen
+                        Tiergruppe sein. In diesem Feld kann die ID der übergeordneten Gruppe angegeben werden.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="timeStamp" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Abrufdatum des Datensatzes</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="animalCategoryPRIFType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">GRUD-Tierkategorie</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Identifikator</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="descriptor" type="eCH-0261:descriptorType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Bezeichnung</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="utilisation" type="eCH-0266:utilisationType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="usedInSuisseBilanz" type="xs:boolean">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Angabe, ob die Kategorie in der SuisseBilanz verwendet wird
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="nutrientRequirement" type="eCH-0266:nutritientNeedOrExcretionType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Nährstoffbedarf</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="nutrientAccumulation" type="eCH-0266:nutritientNeedOrExcretionType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Nährstoffanfall</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="zoologicalAnimal" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Eine Tierkategorie aus einer Liste gemäss zoologischer Taxonomie,
+                        d.h. nicht aus einer verordungsbasierten Liste.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="animalCategoryStructuralType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Tierkategorien Strukturdaten</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Identifikator</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="descriptor" type="eCH-0261:descriptorType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Bezeichnung</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="zoologicalAnimal" type="eCH-0261:identifierType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="animalCategoryPRIF" type="eCH-0261:identifierType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Angabe, ob die Kategorie in der SuisseBilanz verwendet wird
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="biologicalSex" type="eCH-0266:biologicalSexType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Nährstoffbedarf</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ageRestriction" type="eCH-0261:identifierType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Nährstoffanfall</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="offspring" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Angabe, ob Nachkommen existieren (ja, nein)</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="YES"/>
+                        <xs:enumeration value="NO"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="lifeStage" type="eCH-0266:lifeStageType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Eine Tierkategorie aus einer Liste gemäss zoologischer Taxonomie,
+                        d.h. nicht aus einer verordungsbasierten Liste.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="synonym" type="eCH-0261:descriptorType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="rotationCount" type="xs:positiveInteger" minOccurs="0"/>
+            <xs:element name="rotationType" type="eCH-0266:rotationTypeType"/>
+            <xs:element name="ethoCategory" type="eCH-0266:animalWelfareContributionType" minOccurs="0"/>
+            <xs:element name="standardLabourUnitProLivestockUnit">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0"/>
+                        <xs:fractionDigits value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="livestockUnitFactor">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0"/>
+                        <xs:fractionDigits value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="detentionForm" type="eCH-0261:identifierType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="zoologicalAnimalType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Zoologische Klassifizierung eines Tieres</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="code">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:maxLength value="50"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="taxonomyAuthority">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:maxLength value="50"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="biologicalSexType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Geschlecht</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="M">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Männlich</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="F">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Weiblich</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="M_OR_F">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Männlich oder weiblich: In einigen Listen sind Tiere aufgeführt, die
+                        entweder weiblich oder männlich sein können.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="UNDEFINED">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Undefiniert: Die Angabe des Geschlechts ist möglicherweise wichtig,
+                        wurde aber für den jeweiligen Eintrag noch nicht festgelegt.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="NA">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Nicht anwendbar: Die Angabe des Geschlechts ist nicht relevant für
+                        den jeweiligen Eintrag.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="utilisationType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="REARING">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Aufzucht</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="BREEDING">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Zucht</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="FATTENING">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Mast</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="MILKING">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Melkung</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="HATCH_LAYLINE">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Bruteiproduktion für Legelinien</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ORNAMENTAL">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Zier</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="HOBBY">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Hobby</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="UNDEFINED">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Nicht definiert</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="rotationTypeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Umtriebsart</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="PER_YEAR">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Umtriebe bemessen pro Jahr</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PER_LOCATION">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Umtriebe bemessen pro Standort</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PER_YEAR_AND_LOCATION">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Umtriebe bemessen pro Jahr und Standort</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="taxonomyAuthorityType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Fachquelle</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="item" type="eCH-0261:enumeratedItemType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Eintrag aus einer Liste (Identifikator, Be-zeichnung,
+                        Beschreibung).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ageRestrictionType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Alterseinschränkung</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Identifikator</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="descriptor" type="eCH-0261:descriptorType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Bezeichnung</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="lowerLimit" type="xs:integer" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Unteres Alterslimit</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="lowerOperator" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Operator für das untere Alterslimit</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="&lt;">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Kleiner als</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="&lt;=">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Kleiner gleich</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="=">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Gleich</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="!=">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Ungleich</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="&gt;=">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Grösser gleich</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="&gt;">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Grösser als</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="lowerUnit" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Einheit für das untere Alterslimit</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="D">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Tag(e)</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="M">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Monat(e)</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="Y">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Jahr(e)</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="upperLimit" type="xs:integer" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Oberes Alterslimit</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="upperOperator" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Operator für das obere Alterslimit</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="&lt;">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Kleiner als</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="&lt;=">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Kleiner gleich</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="=">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Gleich</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="!=">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Ungleich</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="&gt;=">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Grösser gleich</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="&gt;">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Grösser als</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="upperUnit" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Einheit für das obere Alterslimit</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="D">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Tag(e)</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="M">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Monat(e)</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="Y">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="de">Jahr(e)</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="animalWelfareContributionType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Tierwohlbeiträge</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Identifikator</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="descriptor" type="eCH-0261:descriptorType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Bezeichnung</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="zoologicalAnimal" type="eCH-0261:identifierType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Ein Tier aus einer Liste gemäss zoologischer Taxonomie, d.h. nicht
+                        aus einer verordungsbasierten Liste.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="lifeStageType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Alterskategorie</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="ADULT">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Ausgewachsen oder entwickelt.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="YOUTH">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Jungtier. Noch nicht vollständig ausgewachsen oder entwi-ckelt
+                        (Adoleszenz).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="INFANT">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Frühstadium. Z.B. Küken.</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ANY">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Wird verwendet, wenn eine Eigenschaft auf alle Alterskategorien
+                        zutrifft.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="detentionFormType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Haltungsform</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Identifikator</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="descriptor" type="eCH-0261:descriptorType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Bezeichnung</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="zoologicalAnimal" type="eCH-0261:identifierType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Ein Tier aus einer Liste gemäss zoologischer Taxonomie, d.h. nicht
+                        aus einer verordungsbasierten Liste.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="husbandryCategory" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">ID einer Art der Tierhaltung gemäss eCH-0262</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="nutritientNeedOrExcretionType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Nährstoffbedarf/-ausscheidung</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Identifikator</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="descriptor" type="eCH-0261:descriptorType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Bezeichnung</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="animalSpecific" type="xs:boolean" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Angabe, ob der Eintrag tierspezifisch ist.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="required" type="xs:boolean" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Angabe, ob die Deklaration der Substanz erforderlich ist.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="substance" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">ID einer Substanz gemäss eCH-0263</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="density" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Raumgewicht</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="quantity">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Menge</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:fractionDigits value="2"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="unit" maxOccurs="2">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Einheit</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="eCH-0261:unitType">
+                        <xs:enumeration value="%"/>
+                        <xs:enumeration value="kg/m3"/>
+                        <xs:enumeration value="kg/pc"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="milkUreaReportType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Milchharnstoffwert</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Identifikator</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="analysisDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Datum der Analyse</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="value" type="eCH-0261:descriptorType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Wert</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="unit">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Einheit (eingeschränkt auf Liter)</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="eCH-0261:unitType">
+                        <xs:enumeration value="m3"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="localUnit" type="eCH-0108:localIdType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">BUR-Nr. der zugehörigen lokalen Einheit</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="milkProductionReportType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Milchproduktion</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="id" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Identifikator</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="analysisDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Datum der Analyse</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="value" type="eCH-0261:descriptorType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Wert</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="unit">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Einheit (eingeschränkt auf Liter)</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="eCH-0261:unitType">
+                        <xs:enumeration value="m3"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="localUnit" type="eCH-0108:localIdType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">BUR-Nr. der zugehörigen lokalen Einheit</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <!--Livestock-->
+    <xs:complexType name="previousYearLivestockSummaryReportType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de"/>
+            <xs:documentation xml:lang="en">This defines the animal stock per location and
+                reporting source on year-round facilities. The report is for the previous
+                year vis-à-vis the report date.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="animalStock" maxOccurs="unbounded" type="eCH-0266:animalStockType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="animalStockType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">
+                Dieses Element enthält alle Daten einer Tierkategorie der
+                angegebenen lokalen Einheit.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="contributionYear" type="xs:gYear">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Enthält das Jahr, in welche die
+                        Daten erhoben wurden.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="en">The year for which the data is
+                        reported. In practice this will be the year previous to that of
+                        the report date.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="reportDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Enthält das Datum des Berichts bzw.
+                        der Datenübertragung.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="en">The date on which the report was
+                        created or on which the data transmission was effected.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="mainLocalUnit" type="eCH-0108:localIdType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">BUR-Nr. der lokalen Einheit.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="surveyLocalUnit">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Enthält die kantonale Identifikationsnummer der Betriebsform auf der Stufe,
+                        auf der die sich in diesem Report befindlichen Daten erfasst wurden.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:maxLength value="50"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="responsiblePerson" type="eCH-0261:personIdentifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Reporter and/or representative of the localUnit.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="animalCategoryStructural" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Definiert die Tierkategorie aus der angegebenen Spezifikation.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:choice>
+                <xs:element name="livestockAnimalTracing" type="eCH-0266:livestockReportedViaAnimalTracingType">
+                    <!-- -->
+                </xs:element>
+                <xs:element name="livestockSelfDeclared" type="eCH-0266:selfReportedLivestockType"
+                            maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="livestockReportedViaAnimalTracingType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                This node contains contains information regarding
+                cattle, equidae, sheep, goats, and bison.
+                Do not use if the the animal in question belongs
+                to another category.
+            </xs:documentation>
+            <xs:documentation xml:lang="de">
+                Ce nœud contient les données BDTA pour les bovins,
+                les équidés, les moutons, les chèvres et les bisons.
+                Il ne peut pas être livré pour les autres catégories
+                d’animaux
+            </xs:documentation>
+            <xs:documentation xml:lang="de">
+                Enthält die TVD-Daten für Rindvieh,
+                Tiere der Pferdegattung, Schafe, Ziegen und Bisons.
+                Für die anderen Tierkategorien darf dieser Knoten
+                nicht übermittelt werden
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="animalTracingDataOriginal" type="eCH-0266:livestockReportViaAnimalTracingOriginalType"/>
+            <xs:element name="animalTrackingDataFinal" type="eCH-0266:livestockReportedViaAnimalTracingFinalType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="livestockReportViaAnimalTracingOriginalType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Dieses Element beschreibt die Originaldaten des Tierbestands aus der TVD.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="quantityTotal" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Enthält den gesamten Bestand der Tierkategorie.
+                         (Gezählte Tiertage auf dem Betrieb + Tiertage Sömmerung Inland + Tiertage auf angestammten
+                        Sömmerungsbetrieben in der ausländischen Grenzzone) / Tage des Jahres
+                        (Summe der Werte aus durationSum + livestockUnkt + quantity ) /365 (bzw. 366 im Falle eines
+                        Schaltjahres)
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="livestockUnitTotal">
+                <xs:annotation>
+                    <!-- Merkmalskatalog contains information as to how this was calculcated.
+                        pg. 19/85. We probably want to expand upon the documentation here.
+                        At the same time, this is a calculated value
+                        and it makes me wonder if it should be included in the XSD / Spec
+                        at all! -->
+                    <xs:documentation xml:lang="de">
+                        Enthält die Summe der Anzahl Grossvieheinheiten auf dem Betrieb
+                        sowie der Sömmerung im Inland und auf
+                        angestammten Sömmerungsbetrieben in der ausländischen Grenzzone.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:fractionDigits value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="durationSumTotal" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Enthält die Summe der Tiertage auf dem Betrieb
+                        sowie der Sömmerung im Inland und auf
+                        angestammten Sömmerungsbetrieben in der
+                        ausländischen Grenzzone.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="surveyFarmDetails" type="eCH-0266:surveyFarmDetailsType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Enthält die TVD-Daten zum Tierbestand auf dem Hauptbetrieb.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="summeringInlandDetails" type="eCH-0266:summeringInlandDetailsType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Dieser Knoten enthält die TVD-Daten zur
+                        Sömmerung im Inland.
+                        → Dieser Knoten ist zwingend zu liefern, wenn Tiere
+                        im Inland gesömmert wurden (ohne Bisons).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="summeringAbroadDetails" type="eCH-0266:summeringAbroadDetailsType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Dieser Knoten enthält die TVD-Daten zur
+                        Sömmerung auf angestammten
+                        Sömmerungsbetrieben in der ausländischen
+                        Grenzzone (ohne Bisons).
+                        → Dieser Knoten ist zwingend zu liefern, wenn Tiere
+                        auf angestammten Sömmerungsbetrieben in der
+                        ausländischen Grenzzone gesömmert wurden (ohne
+                        Bisons).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="surveyFarmDetailsType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Enthält die TVD-Daten zum Tierbestand auf dem Hauptbetrieb.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="declarationDayQuantity" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Enthält den Bestand der Tierkategorie am Stichtag.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="quantity">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Enthält die Anzahl Tiere auf dem Betrieb aus den
+                        TVD-Daten.
+                        → Gezählte Tiertage auf dem Betrieb / Tage des
+                        Jahres (Basisinformation für Nährstoffbilanz)
+
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:fractionDigits value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="livestockUnit">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Enthält die Anzahl GVE auf dem Betrieb aus den
+                        TVD-Daten.
+                        → Gezählte Tiertage / Tage des Jahres * GVE-Faktor
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:fractionDigits value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="durationSum" type="xs:nonNegativeInteger" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Enthält die Anzahl Tiertage auf dem Betrieb aus den
+                        TVD-Daten (inkl. Aufenthalte an Ausstellungen,
+                        Tierklinik).
+                        → Auf der TVD gezählte Aufenthaltstage
+                        (Übernachtungsregel).
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="summeringInlandDetailsType ">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Dieses Element enthält die TVD-Daten zur Sömmerung im Inland.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="livestockUnit">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Enthält die Anzahl im Inland gesömmerte GVE aus
+                        den TVD-Daten.
+                        → Gezählte Tiertage der Sömmerung im Inland /
+                        Tage des Jahres * GVE-Faktor
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:fractionDigits value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="normedLivestockUnit">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Enthält die Anzahl Normalstösse der im Inland
+                        gesömmerten Tiere aus den TVD-Daten.
+                        → Gezählte Tiertage der Sömmerung im Inland
+                        * GVE-Faktor / 100.
+                    </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:fractionDigits value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="durationSum" type="xs:nonNegativeInteger" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Enthält die Anzahl Sömmerungstage im Inland aus
+                        den TVD-Daten.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="summeringAbroadDetailsType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">Dieses Element enthält die TVD-Daten zur Sömmerung auf angestammten
+                Sömmerungsbetrieben in der ausländischen Grenzzone.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="livestockUnit">
+                <xs:simpleType>
+                    <xs:annotation>
+                        <xs:documentation xml:lang="de">
+                            Enthält die auf angestammten Sömmerungsbetrieben
+                            in der ausländischen Grenzzone gesömmerte GVE
+                            aus den TVD-Daten.
+                            → Gezählte Tiertage der Sömmerung auf
+                            angestammten Sömmerungsbetrieben in der
+                            ausländischen Grenzzone / Tage des Jahres * GVE-Faktor
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:restriction base="xs:decimal">
+                        <xs:fractionDigits value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="durationSum" type="xs:nonNegativeInteger" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Enthält die Anzahl Sömmerungstage auf
+                        angestammten Sömmerungsbetrieben in der
+                        ausländischen Grenzzone aus den TVD-Daten.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="livestockReportedViaAnimalTracingFinalType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Animal tracing data that was corrected by the Canton.
+            </xs:documentation>
+            <!-- reference: we are at page 20 in Merkmalskatalog Edition 2024 -->
+            <xs:documentation xml:lang="de">
+                Enthält die finalen Daten (nach
+                Korrekturen vom Kanton).
+            </xs:documentation>
+            <xs:documentation xml:lang="fr">
+                Contient les données finales (après
+                corrections du canton)
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <!-- do we want to include calculated fields ??? !!!  -->
+            <xs:element name="quantityTotal" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Enthält den gesamten Bestand der Tierkategorie
+                        nach Korrektur Kanton (Tiertage Ganzjahresbetrieb
+                        + Tiertage Sömmerung Inland + Tiertage
+                        Sömmerung Ausland Angestammt) / Tage des
+                        Jahres.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="livestockUnitTotal">
+                <xs:simpleType>
+                    <xs:annotation>
+                        <xs:documentation xml:lang="de">
+                            Enthält die Summe der Anzahl Grossvieheinheit auf dem Betrieb
+                            sowie der Sömmerung im Inland und auf
+                            angestammten Sömmerungsbetrieben in der
+                            ausländischen Grenzzone nach Korrektur Kanton.
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:restriction base="xs:decimal">
+                        <xs:fractionDigits value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="surveyFarmDetails" type="eCH-0266:surveyFarmDetailsType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Enthält die TVD-Daten nach
+                        Korrektur Kanton zum Tierbestand auf dem
+                        Hauptbetrieb.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="summeringInlandDetails" type="eCH-0266:summeringInlandDetailsType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Dieser Knoten enthält die TVD-Daten zur
+                        Sömmerung von Rindvieh und Tieren der
+                        Pferdegattung im Inland nach Korrektur Kanton.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="summeringAbroadDetails" type="eCH-0266:summeringAbroadDetailsType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Dieser Knoten enthält die TVD-Daten zur
+                        Sömmerung auf angestammten
+                        Sömmerungsbetrieben in der ausländischen
+                        Grenzzone nach Korrektur Kanton.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="selfReportedLivestockType">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">
+                Dieser Knoten enthält die Daten aus der
+                Selbstdeklaration.
+                → Kann pro Tierkategorie mehrmals übermittelt
+                werden, falls Tiere unterschiedlich lange gesömmert
+                wurden.
+                Gibt es nur eine einzige Sömmerungsdauer
+                (2.1.7.5summeringDuration), wird pro Tierkategorie
+                nur ein Datensatz mit allen Angaben geliefert. Gibt es
+                mehrere Sömmerungsdauern, werden mehrere
+                Datensätze geliefert:
+                • ein Datensatz enthält die Anzahl Tiere am
+                Stichtag und den Durchschnittswert
+                (2.1.7.1+2.1.7.2) (als Anzahl gesömmerte
+                Tiere und Sömmerungsdauer wird 0
+                geliefert)
+                • weitere Datensätze mit der jeweiligen
+                Anzahl der gesömmerten Tiere und der
+                dazugehörenden Sömmerungsdauer
+                (2.1.7.4+2.1.7.5) (als Anzahl Tiere am
+                Stichtag und Durchschnittswert wird 0
+                geliefert)
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="declarationDayQuantity" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <!-- todo: for me the descriptin is not clear.
+                        Are we reporting animal stock "today" ??  or is this a
+                        reference to another element in this XSD ?? -->
+                    <xs:documentation xml:lang="de">
+                        Enthält den Bestand der Tierkategorie am Stichtag.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="fr">
+                        Contient le cheptel de la catégorie d’animaux du jour de
+                        référence.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="averageQuantity" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Enthält den Durchschnittsbestand der Tierkategorie
+                        in Stück im Vorjahr.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="detentionType" type="eCH-0261:identifierType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Enthält die Haltungsform für Schweine und Geflügel
+                        und ist nur für diese Gattungen zwingend. Für andere
+                        Gattungen soll diese Information nicht geliefert
+                        werden.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="summeringQuantity" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Enthält die Anzahl (Stück) der gesömmerten Tiere im
+                        Vorjahrl
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="summeringDuration" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">
+                        Enthält die Sömmerungsdauer im Vorjahr in Anzahl
+                        Tagen.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <!--Root-Element-->
+    <xs:element name="root">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="individualAnimal" type="eCH-0266:individualAnimalType"/>
+                <xs:element name="animalGroup" type="eCH-0266:animalGroupType"/>
+                <xs:element name="animalCategoryPRIF" type="eCH-0266:animalCategoryPRIFType"/>
+                <xs:element name="ageRestriction" type="eCH-0266:ageRestrictionType"/>
+                <xs:element name="animalCategoryStructural" type="eCH-0266:animalCategoryStructuralType"/>
+                <xs:element name="animalStock" type="eCH-0266:animalStockType"/>
+                <xs:element name="animalWelfareContribution" type="eCH-0266:animalWelfareContributionType"/>
+                <xs:element name="biologicalSex" type="eCH-0266:biologicalSexType"/>
+                <xs:element name="summeringAbroadDetails" type="eCH-0266:summeringAbroadDetailsType"/>
+                <xs:element name="zoologicalAnimal" type="eCH-0266:zoologicalAnimalType"/>
+                <xs:element name="utilisation" type="eCH-0266:utilisationType"/>
+                <xs:element name="rotationType" type="eCH-0266:rotationTypeType"/>
+                <xs:element name="taxonomyAuthority" type="eCH-0266:taxonomyAuthorityType"/>
+                <xs:element name="ageRestriction" type="eCH-0266:ageRestrictionType"/>
+                <xs:element name="lifeStage" type="eCH-0266:lifeStageType"/>
+                <xs:element name="detentionForm" type="eCH-0266:detentionFormType"/>
+                <xs:element name="nutritientNeedOrExcretion" type="eCH-0266:nutritientNeedOrExcretionType"/>
+                <xs:element name="milkProductionReport" type="eCH-0266:milkProductionReportType"/>
+                <xs:element name="milkUreaReport" type="eCH-0266:milkUreaReportType"/>
+                <xs:element name="previousYearLivestockSummaryReport"
+                            type="eCH-0266:previousYearLivestockSummaryReportType"/>
+                <xs:element name="animalStock" type="eCH-0266:animalStockType"/>
+                <xs:element name="livestockReportedViaAnimalTracingFinal"
+                            type="eCH-0266:livestockReportedViaAnimalTracingFinalType"/>
+                <xs:element name="livestockReportViaAnimalTracingOriginal"
+                            type="eCH-0266:livestockReportViaAnimalTracingOriginalType"/>
+                <xs:element name="summeringAbroadDetails" type="eCH-0266:summeringAbroadDetailsType"/>
+                <xs:element name="summeringInlandDetailsT" type="eCH-0266:summeringInlandDetailsType "/>
+                <xs:element name="selfReportedLivestock" type="eCH-0266:selfReportedLivestockType"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>
 
 
