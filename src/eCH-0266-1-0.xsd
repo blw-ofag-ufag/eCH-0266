@@ -8,8 +8,7 @@ Datum				Version				Autor
 	<xs:annotation>
 		<xs:documentation xml:lang="de">Nutztierhaltung - Entwurf, Stand 29.09.2023</xs:documentation>
 	</xs:annotation>
-	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0261/1" schemaLocation="./eCH-0261-1-0.xsd"/>
-	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0108/7" schemaLocation="./eCH-0108-7-0.xsd"/>
+	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0261/1" schemaLocation="../../eCH-0266/src/eCH-0266-1-0.xsd"/>
 	<!--Hauptdatentypen-->
 	<xs:complexType name="individualAnimalType">
 		<xs:annotation>
@@ -1275,9 +1274,13 @@ Datum				Version				Autor
 	<!--Root-Element-->
 	<xs:element name="root">
 		<xs:complexType>
-			<xs:sequence>
+			<xs:choice>
 				<xs:element name="individualAnimal" type="eCH-0266:individualAnimalType"/>
-			</xs:sequence>
+				<xs:element name="" type="eCH-0266:animalGroupType"/>
+				<xs:element name="" type="eCH-0266:animalGroupType"/>
+			</xs:choice>
 		</xs:complexType>
 	</xs:element>
 </xs:schema>
+
+
