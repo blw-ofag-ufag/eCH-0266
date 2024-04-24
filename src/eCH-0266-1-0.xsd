@@ -290,7 +290,7 @@ Datum				Version				Autor
 			</xs:element>
 			<xs:element name="lifeStage" type="eCH-0266:lifeStageType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Eine Tierkategorie aus einer Liste gemäss zoologischer Taxonomie, d.h. nicht aus einer verordungsbasierten Liste.</xs:documentation>
+					<xs:documentation xml:lang="de">Generelle Angabe über das Alter des Tieres.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="synonym" type="eCH-0261:descriptorType" minOccurs="0" maxOccurs="unbounded"/>
