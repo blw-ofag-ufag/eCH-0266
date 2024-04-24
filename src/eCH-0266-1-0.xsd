@@ -586,32 +586,13 @@ Datum				Version				Autor
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:simpleType name="lifeStageType">
+	<xs:complexType name="lifeStageType">
 		<xs:annotation>
 			<xs:documentation xml:lang="de">Alterskategorie</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="xs:token">
-			<xs:enumeration value="ADULT">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Ausgewachsen oder entwickelt.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="YOUTH">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Jungtier. Noch nicht vollständig ausgewachsen oder entwi-ckelt (Adoleszenz).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="INFANT">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Frühstadium. Z.B. Küken.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="ANY">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Wird verwendet, wenn eine Eigenschaft auf alle Alterskategorien zutrifft.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-		</xs:restriction>
+		<xs:sequence>
+			<xs:element name="item" type="eCH-0261:enumeratedItemType"/>
+		</xs:sequence>
 	</xs:simpleType>
 	<xs:complexType name="detentionFormType">
 		<xs:annotation>
