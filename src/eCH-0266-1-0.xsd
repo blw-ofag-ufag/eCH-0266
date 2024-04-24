@@ -373,48 +373,9 @@ Datum				Version				Autor
 		<xs:annotation>
 			<xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="xs:token">
-			<xs:enumeration value="REARING">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Aufzucht</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="BREEDING">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Zucht</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="FATTENING">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Mast</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="MILKING">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Melkung</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="HATCH_LAYLINE">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Bruteiproduktion für Legelinien</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="ORNAMENTAL">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Zier</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="HOBBY">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Hobby</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="UNDEFINED">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Nicht definiert</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-		</xs:restriction>
+		<xs:sequence>
+			<xs:element name="item" type="eCH-0261:enumeratedItemType"/>
+		</xs:sequence>
 	</xs:simpleType>
 	<xs:simpleType name="rotationTypeType">
 		<xs:annotation>
