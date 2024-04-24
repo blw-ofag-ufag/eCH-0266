@@ -369,7 +369,7 @@ Datum				Version				Autor
 			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="utilisationType">
+	<xs:complexType name="utilisationType">
 		<xs:annotation>
 			<xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
 		</xs:annotation>
