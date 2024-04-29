@@ -280,12 +280,12 @@
 					<xs:documentation xml:lang="de">Angabe, ob die Kategorie in der SuisseBilanz verwendet wird</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="nutrientRequirement" type="eCH-0266:nutritientNeedOrExcretionType" maxOccurs="unbounded">
+			<xs:element name="nutrientRequirement" type="eCH-0266:nutrientNeedOrExcretionType" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation xml:lang="de">Nährstoffbedarf</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="nutrientAccumulation" type="eCH-0266:nutritientNeedOrExcretionType" maxOccurs="unbounded">
+			<xs:element name="nutrientAccumulation" type="eCH-0266:nutrientNeedOrExcretionType" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation xml:lang="de">Nährstoffanfall</xs:documentation>
 				</xs:annotation>
@@ -677,7 +677,7 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="nutritientNeedOrExcretionType">
+	<xs:complexType name="nutrientNeedOrExcretionType">
 		<xs:annotation>
 			<xs:documentation xml:lang="de">Nährstoffbedarf/-ausscheidung</xs:documentation>
 		</xs:annotation>
