@@ -110,7 +110,7 @@ Datum				Version				Autor
 					<xs:documentation xml:lang="de">Geschlecht</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="timeStamp" type="xs:date">
+			<xs:element name="referenceDate" type="xs:date">
 				<xs:annotation>
 					<xs:documentation xml:lang="de">Abrufdatum des Datensatzes</xs:documentation>
 				</xs:annotation>
@@ -193,7 +193,7 @@ Datum				Version				Autor
 					<xs:documentation xml:lang="de">Übergeordnete Gruppe: Eine Tiergruppe kann Teil einer anderen Tiergruppe sein. In diesem Feld kann die ID der übergeordneten Gruppe angegeben werden.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="timeStamp" type="xs:date">
+			<xs:element name="referenceDate" type="xs:date">
 				<xs:annotation>
 					<xs:documentation xml:lang="de">Abrufdatum des Datensatzes</xs:documentation>
 				</xs:annotation>
