@@ -259,7 +259,7 @@ Datum				Version				Autor
 			</xs:element>
 			<xs:element name="zoologicalAnimal" type="eCH-0261:identifierType" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
+					<xs:documentation xml:lang="de">Eine Tierkategorie aus einer Liste gemäss zoologischer Taxonomie, d.h. nicht aus einer verordungsbasierten Liste.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="animalCategoryPRIF" type="eCH-0261:identifierType" minOccurs="0" maxOccurs="unbounded">
