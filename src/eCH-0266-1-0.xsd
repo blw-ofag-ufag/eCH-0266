@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
-Datum				Version				Autor
-*********************************************
-2023-09-29			Entwurf			Stl
--->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:eCH-0108="http://www.ech.ch/xmlns/eCH-0108/7" xmlns:eCH-0261="http://www.ech.ch/xmlns/eCH-0261/1" xmlns:eCH-0266="http://www.ech.ch/xmlns/eCH-0266/1" targetNamespace="http://www.ech.ch/xmlns/eCH-0266/1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
 	<xs:annotation>
 		<xs:documentation xml:lang="de">Nutztierhaltung - Entwurf, Stand 29.09.2023</xs:documentation>
 	</xs:annotation>
-	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0261/1" schemaLocation="./eCH-0261-1-0.xsd"/>
-	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0108/7" schemaLocation="./eCH-0108-7-0.xsd"/>
+	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0261/1"/>
+	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0108/7"/>
 	<!--Hauptdatentypen-->
 	<xs:complexType name="individualAnimalType">
 		<xs:annotation>
@@ -73,20 +68,80 @@ Datum				Version				Autor
 					</xs:choice>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="birthWeightInG" type="xs:decimal" minOccurs="0">
+			<xs:element name="birthWeight" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation xml:lang="de">Geburtsgewicht in Gramm</xs:documentation>
 				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:restriction base="eCH-0266:measurementType">
+							<xs:sequence>
+								<xs:element name="value">
+									<xs:simpleType>
+										<xs:restriction base="xs:decimal"/>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="unit">
+									<xs:simpleType>
+										<xs:restriction base="eCH-0261:unitType">
+											<xs:enumeration value="kg"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+							</xs:sequence>
+						</xs:restriction>
+					</xs:complexContent>
+				</xs:complexType>
 			</xs:element>
-			<xs:element name="livingWeightInG" type="xs:decimal" minOccurs="0">
+			<xs:element name="livingWeight" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation xml:lang="de">Lebendgewicht in Gramm</xs:documentation>
 				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:restriction base="eCH-0266:measurementType">
+							<xs:sequence>
+								<xs:element name="value">
+									<xs:simpleType>
+										<xs:restriction base="xs:decimal"/>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="unit">
+									<xs:simpleType>
+										<xs:restriction base="eCH-0261:unitType">
+											<xs:enumeration value="kg"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+							</xs:sequence>
+						</xs:restriction>
+					</xs:complexContent>
+				</xs:complexType>
 			</xs:element>
-			<xs:element name="slaughterWeightInG" type="xs:decimal" minOccurs="0">
+			<xs:element name="slaughterWeight" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation xml:lang="de">Schlachtgewicht in Gramm</xs:documentation>
 				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:restriction base="eCH-0266:measurementType">
+							<xs:sequence>
+								<xs:element name="value">
+									<xs:simpleType>
+										<xs:restriction base="xs:decimal"/>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="unit">
+									<xs:simpleType>
+										<xs:restriction base="eCH-0261:unitType">
+											<xs:enumeration value="kg"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+							</xs:sequence>
+						</xs:restriction>
+					</xs:complexContent>
+				</xs:complexType>
 			</xs:element>
 			<xs:element name="location" type="eCH-0108:localIdType" minOccurs="0">
 				<xs:annotation>
@@ -128,7 +183,7 @@ Datum				Version				Autor
 				</xs:annotation>
 			</xs:element>
 			<xs:choice>
-				<xs:element name="individualAnimal" type="eCH-0261:identifierType" maxOccurs="unbounded" minOccurs="0">
+				<xs:element name="individualAnimal" type="eCH-0261:identifierType" minOccurs="0" maxOccurs="unbounded">
 					<xs:annotation>
 						<xs:documentation xml:lang="de">Einzeltiere</xs:documentation>
 					</xs:annotation>
@@ -183,9 +238,9 @@ Datum				Version				Autor
 					<xs:documentation xml:lang="de">Standort</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="detentionForm" type="eCH-0261:identifierType" minOccurs="0">
+			<xs:element name="husbandryForm" type="eCH-0261:identifierType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Haltungsform nach Merkblatt 6.3 Merkmalskatalog</xs:documentation>
+					<xs:documentation xml:lang="de">Eintrag der ID der Tierhaltung in der sich die Tiergruppe aufhält.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="parentGroup" type="eCH-0261:identifierType" minOccurs="0">
@@ -240,6 +295,8 @@ Datum				Version				Autor
 					<xs:documentation xml:lang="de">Eine Tierkategorie aus einer Liste gemäss zoologischer Taxonomie, d.h. nicht aus einer verordungsbasierten Liste.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="rotationCount" type="xs:positiveInteger" minOccurs="0"/>
+			<xs:element name="rotationType" type="eCH-0266:rotationTypeType" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="animalCategoryStructuralType">
@@ -295,7 +352,7 @@ Datum				Version				Autor
 			</xs:element>
 			<xs:element name="synonym" type="eCH-0261:descriptorType" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="rotationCount" type="xs:positiveInteger" minOccurs="0"/>
-			<xs:element name="rotationType" type="eCH-0266:rotationTypeType"/>
+			<xs:element name="rotationType" type="eCH-0266:rotationTypeType" minOccurs="0"/>
 			<xs:element name="ethoCategory" type="eCH-0266:animalWelfareContributionType" minOccurs="0"/>
 			<xs:element name="standardLabourUnitProLivestockUnit">
 				<xs:simpleType>
@@ -313,7 +370,6 @@ Datum				Version				Autor
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
-			<xs:element name="detentionForm" type="eCH-0261:identifierType" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="zoologicalAnimalType">
@@ -376,7 +432,7 @@ Datum				Version				Autor
 		<xs:sequence>
 			<xs:element name="item" type="eCH-0261:enumeratedItemType"/>
 		</xs:sequence>
-	</xs:simpleType>
+	</xs:complexType>
 	<xs:simpleType name="rotationTypeType">
 		<xs:annotation>
 			<xs:documentation xml:lang="de">Umtriebsart</xs:documentation>
@@ -593,7 +649,7 @@ Datum				Version				Autor
 		<xs:sequence>
 			<xs:element name="item" type="eCH-0261:enumeratedItemType"/>
 		</xs:sequence>
-	</xs:simpleType>
+	</xs:complexType>
 	<xs:complexType name="detentionFormType">
 		<xs:annotation>
 			<xs:documentation xml:lang="de">Haltungsform</xs:documentation>
@@ -614,7 +670,7 @@ Datum				Version				Autor
 					<xs:documentation xml:lang="de">Ein Tier aus einer Liste gemäss zoologischer Taxonomie, d.h. nicht aus einer verordungsbasierten Liste.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="husbandryCategory" type="eCH-0261:identifierType">
+			<xs:element name="husbandryForm" type="eCH-0261:identifierType">
 				<xs:annotation>
 					<xs:documentation xml:lang="de">ID einer Art der Tierhaltung gemäss eCH-0262</xs:documentation>
 				</xs:annotation>
@@ -763,7 +819,7 @@ Datum				Version				Autor
 				year vis-à-vis the report date.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="animalStock" maxOccurs="unbounded" type="eCH-0266:animalStockType"/>
+			<xs:element name="animalStock" type="eCH-0266:animalStockType" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="animalStockType">
@@ -816,17 +872,20 @@ Datum				Version				Autor
 								</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="animalCategoryStructural" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">
-									Definiert die Tierkategorie aus der angegebenen Spezifikation.
-								</xs:documentation>
-				</xs:annotation>
-			</xs:element>
 			<xs:choice>
-				<xs:element name="livestockAnimalTracing" type="eCH-0266:livestockReportedViaAnimalTracingType">
-					<!-- -->
+				<xs:element name="animalCategoryStructural" type="eCH-0261:identifierType">
+					<xs:annotation>
+						<xs:documentation xml:lang="de">Tierkategorie gemäss Direktzah-lungsvollzug Landwirtschaft (Merkmalskatalog Strukturdaten). </xs:documentation>
+					</xs:annotation>
 				</xs:element>
+				<xs:element name="animalCategoryPRIF" type="eCH-0261:identifierType">
+					<xs:annotation>
+						<xs:documentation xml:lang="de">Tierkategorie gemäss GRUD</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:choice>
+				<xs:element name="livestockAnimalTracing" type="eCH-0266:livestockReportedViaAnimalTracingType"/>
 				<xs:element name="livestockSelfDeclared" type="eCH-0266:selfReportedLivestockType" maxOccurs="unbounded"/>
 			</xs:choice>
 		</xs:sequence>
@@ -986,7 +1045,7 @@ Datum				Version				Autor
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="summeringInlandDetailsType ">
+	<xs:complexType name="summeringInlandDetailsType">
 		<xs:annotation>
 			<xs:documentation xml:lang="de">Dieses Element enthält die TVD-Daten zur Sömmerung im Inland.</xs:documentation>
 		</xs:annotation>
@@ -1186,7 +1245,7 @@ Datum				Version				Autor
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="detentionType" type="eCH-0261:identifierType" minOccurs="0">
+			<xs:element name="detentionForm" type="eCH-0261:identifierType" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation xml:lang="de">
 						Enthält die Haltungsform für Schweine und Geflügel 
@@ -1210,6 +1269,37 @@ Datum				Version				Autor
 						Enthält die Sömmerungsdauer im Vorjahr in Anzahl 
 						Tagen.
 					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--MeasurementType redefinition from eCH-0261-->
+	<xs:complexType name="measurementType">
+		<xs:annotation>
+			<xs:documentation xml:lang="de">Messung mit Wert und Einheit</xs:documentation>
+			<xs:documentation xml:lang="fr">Mesure avec valeur et unité</xs:documentation>
+			<xs:documentation xml:lang="en">Measurement with value and unit</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="value" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Menge, Wert</xs:documentation>
+					<xs:documentation xml:lang="fr">Quantité, valeur</xs:documentation>
+					<xs:documentation xml:lang="en">Quantity, value</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unit" type="eCH-0261:unitType">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Zugehörige Einheit</xs:documentation>
+					<xs:documentation xml:lang="fr">Unité associée</xs:documentation>
+					<xs:documentation xml:lang="en">Associated unit</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unitName" type="xs:token" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Genauere Bezeichnung der Einheit, wenn im Feld «unit» die Einheit «pc» (Stück) angegeben wurde.</xs:documentation>
+					<xs:documentation xml:lang="fr">Désignation plus précise de l'unité, si l'unité "pc" (pièce) a été indiquée dans le champ "unit".</xs:documentation>
+					<xs:documentation xml:lang="en">More precise designation of the unit if the unit "pc" (piece) was specified in the "unit" field.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
