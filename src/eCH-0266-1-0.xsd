@@ -110,7 +110,7 @@ Datum				Version				Autor
 					<xs:documentation xml:lang="de">Geschlecht</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="timeStamp" type="xs:date">
+			<xs:element name="referenceDate" type="xs:date">
 				<xs:annotation>
 					<xs:documentation xml:lang="de">Abrufdatum des Datensatzes</xs:documentation>
 				</xs:annotation>
@@ -193,7 +193,7 @@ Datum				Version				Autor
 					<xs:documentation xml:lang="de">Übergeordnete Gruppe: Eine Tiergruppe kann Teil einer anderen Tiergruppe sein. In diesem Feld kann die ID der übergeordneten Gruppe angegeben werden.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="timeStamp" type="xs:date">
+			<xs:element name="referenceDate" type="xs:date">
 				<xs:annotation>
 					<xs:documentation xml:lang="de">Abrufdatum des Datensatzes</xs:documentation>
 				</xs:annotation>
@@ -259,7 +259,7 @@ Datum				Version				Autor
 			</xs:element>
 			<xs:element name="zoologicalAnimal" type="eCH-0261:identifierType" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
+					<xs:documentation xml:lang="de">Eine Tierkategorie aus einer Liste gemäss zoologischer Taxonomie, d.h. nicht aus einer verordungsbasierten Liste.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="animalCategoryPRIF" type="eCH-0261:identifierType" minOccurs="0" maxOccurs="unbounded">
@@ -290,7 +290,7 @@ Datum				Version				Autor
 			</xs:element>
 			<xs:element name="lifeStage" type="eCH-0266:lifeStageType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Eine Tierkategorie aus einer Liste gemäss zoologischer Taxonomie, d.h. nicht aus einer verordungsbasierten Liste.</xs:documentation>
+					<xs:documentation xml:lang="de">Generelle Angabe über das Alter des Tieres.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="synonym" type="eCH-0261:descriptorType" minOccurs="0" maxOccurs="unbounded"/>
@@ -369,52 +369,13 @@ Datum				Version				Autor
 			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="utilisationType">
+	<xs:complexType name="utilisationType">
 		<xs:annotation>
 			<xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="xs:token">
-			<xs:enumeration value="REARING">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Aufzucht</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="BREEDING">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Zucht</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="FATTENING">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Mast</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="MILKING">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Melkung</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="HATCH_LAYLINE">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Bruteiproduktion für Legelinien</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="ORNAMENTAL">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Zier</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="HOBBY">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Hobby</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="UNDEFINED">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Nicht definiert</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-		</xs:restriction>
+		<xs:sequence>
+			<xs:element name="item" type="eCH-0261:enumeratedItemType"/>
+		</xs:sequence>
 	</xs:simpleType>
 	<xs:simpleType name="rotationTypeType">
 		<xs:annotation>
@@ -625,32 +586,13 @@ Datum				Version				Autor
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:simpleType name="lifeStageType">
+	<xs:complexType name="lifeStageType">
 		<xs:annotation>
 			<xs:documentation xml:lang="de">Alterskategorie</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="xs:token">
-			<xs:enumeration value="ADULT">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Ausgewachsen oder entwickelt.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="YOUTH">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Jungtier. Noch nicht vollständig ausgewachsen oder entwi-ckelt (Adoleszenz).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="INFANT">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Frühstadium. Z.B. Küken.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="ANY">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Wird verwendet, wenn eine Eigenschaft auf alle Alterskategorien zutrifft.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-		</xs:restriction>
+		<xs:sequence>
+			<xs:element name="item" type="eCH-0261:enumeratedItemType"/>
+		</xs:sequence>
 	</xs:simpleType>
 	<xs:complexType name="detentionFormType">
 		<xs:annotation>
