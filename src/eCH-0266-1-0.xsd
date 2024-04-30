@@ -70,7 +70,7 @@
 			</xs:element>
 			<xs:element name="birthWeight" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Geburtsgewicht in Gramm</xs:documentation>
+					<xs:documentation xml:lang="de">Geburtsgewicht in Kilogramm</xs:documentation>
 				</xs:annotation>
 				<xs:complexType>
 					<xs:complexContent>
@@ -95,7 +95,7 @@
 			</xs:element>
 			<xs:element name="livingWeight" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Lebendgewicht in Gramm</xs:documentation>
+					<xs:documentation xml:lang="de">Lebendgewicht in Kilogramm</xs:documentation>
 				</xs:annotation>
 				<xs:complexType>
 					<xs:complexContent>
@@ -120,7 +120,7 @@
 			</xs:element>
 			<xs:element name="slaughterWeight" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Schlachtgewicht in Gramm</xs:documentation>
+					<xs:documentation xml:lang="de">Schlachtgewicht in Kilogramm</xs:documentation>
 				</xs:annotation>
 				<xs:complexType>
 					<xs:complexContent>
@@ -211,15 +211,55 @@
 					<xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="sumLivingWeightInG" type="xs:integer" minOccurs="0">
+			<xs:element name="sumLivingWeight" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Summe Lebendgewicht in Gramm</xs:documentation>
+					<xs:documentation xml:lang="de">Summe Lebendgewicht in Kilogramm</xs:documentation>
 				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:restriction base="eCH-0266:measurementType">
+							<xs:sequence>
+								<xs:element name="value">
+									<xs:simpleType>
+										<xs:restriction base="xs:decimal"/>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="unit">
+									<xs:simpleType>
+										<xs:restriction base="eCH-0261:unitType">
+											<xs:enumeration value="kg"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+							</xs:sequence>
+						</xs:restriction>
+					</xs:complexContent>
+				</xs:complexType>
 			</xs:element>
-			<xs:element name="sumSlaughterWeightInG" type="xs:integer" minOccurs="0">
+			<xs:element name="sumSlaughterWeight" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Summe Schlachtgewicht in Gramm</xs:documentation>
+					<xs:documentation xml:lang="de">Summe Schlachtgewicht in Kilogramm</xs:documentation>
 				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:restriction base="eCH-0266:measurementType">
+							<xs:sequence>
+								<xs:element name="value">
+									<xs:simpleType>
+										<xs:restriction base="xs:decimal"/>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="unit">
+									<xs:simpleType>
+										<xs:restriction base="eCH-0261:unitType">
+											<xs:enumeration value="kg"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+							</xs:sequence>
+						</xs:restriction>
+					</xs:complexContent>
+				</xs:complexType>
 			</xs:element>
 			<xs:choice minOccurs="0">
 				<xs:element name="owner" type="eCH-0108:uidType">
@@ -295,8 +335,7 @@
 					<xs:documentation xml:lang="de">Eine Tierkategorie aus einer Liste gemäss zoologischer Taxonomie, d.h. nicht aus einer verordungsbasierten Liste.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="rotationCount" type="xs:positiveInteger" minOccurs="0"/>
-			<xs:element name="rotationType" type="eCH-0266:rotationTypeType" minOccurs="0"/>
+			<xs:element name="rotation" type="eCH-0266:rotationType" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="animalCategoryStructuralType">
@@ -351,8 +390,7 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="synonym" type="eCH-0261:descriptorType" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="rotationCount" type="xs:positiveInteger" minOccurs="0"/>
-			<xs:element name="rotationType" type="eCH-0266:rotationTypeType" minOccurs="0"/>
+			<xs:element name="rotation" type="eCH-0266:rotationType"/>
 			<xs:element name="ethoCategory" type="eCH-0266:animalWelfareContributionType" minOccurs="0"/>
 			<xs:element name="standardLabourUnitProLivestockUnit">
 				<xs:simpleType>
@@ -433,7 +471,16 @@
 			<xs:element name="item" type="eCH-0261:enumeratedItemType"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:simpleType name="rotationTypeType">
+	<xs:complexType name="rotationType">
+		<xs:annotation>
+			<xs:documentation xml:lang="de">Umtrieb</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="rotationCount" type="xs:positiveInteger"/>
+			<xs:element name="typeOfRotation" type="eCH-0266:typeOfRotationType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="typeOfRotationType">
 		<xs:annotation>
 			<xs:documentation xml:lang="de">Umtriebsart</xs:documentation>
 		</xs:annotation>
