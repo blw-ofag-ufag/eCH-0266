@@ -26,7 +26,7 @@
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
-			<xs:element name="utilisation" type="eCH-0266:utilisationType" minOccurs="0">
+			<xs:element name="utilisation" type="eCH-0261:identifierType" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
 				</xs:annotation>
@@ -36,7 +36,7 @@
 					<xs:documentation xml:lang="de">Ein Tier aus einer Liste gemäss zoologischer Taxonomie, d.h. nicht aus einer verordungsbasierten Liste.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="animalCategoryPRIF" type="eCH-0261:identifierType">
+			<xs:element name="animalCategoryPRIF" type="eCH-0261:identifierType" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation xml:lang="de">Tierkategorie nach Grud</xs:documentation>
 				</xs:annotation>
@@ -203,10 +203,10 @@
 			</xs:choice>
 			<xs:element name="quantity" type="xs:integer">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Anzahl</xs:documentation>
+					<xs:documentation xml:lang="de">Anzahl Tiere in der Gruppe</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="utilisation" type="eCH-0266:utilisationType" minOccurs="0">
+			<xs:element name="utilisation" type="eCH-0261:identifierType" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
 				</xs:annotation>
@@ -310,7 +310,7 @@
 					<xs:documentation xml:lang="de">Bezeichnung</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="utilisation" type="eCH-0266:utilisationType">
+			<xs:element name="utilisation" type="eCH-0261:identifierType">
 				<xs:annotation>
 					<xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
 				</xs:annotation>
@@ -335,7 +335,11 @@
 					<xs:documentation xml:lang="de">Eine Tierkategorie aus einer Liste gemäss zoologischer Taxonomie, d.h. nicht aus einer verordungsbasierten Liste.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="rotation" type="eCH-0266:rotationType" minOccurs="0"/>
+			<xs:element name="rotation" type="eCH-0266:rotationType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Umtrieb</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="animalCategoryStructuralType">
@@ -389,10 +393,25 @@
 					<xs:documentation xml:lang="de">Generelle Angabe über das Alter des Tieres.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="synonym" type="eCH-0261:descriptorType" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="rotation" type="eCH-0266:rotationType"/>
-			<xs:element name="ethoCategory" type="eCH-0266:animalWelfareContributionType" minOccurs="0"/>
+			<xs:element name="synonym" type="eCH-0261:descriptorType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Alternative Bezeichnung(en) für die Tierkategorie für Tierkategorien mit mehreren Bezeichnungen.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rotation" type="eCH-0266:rotationType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Umtrieb</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ethoCategory" type="eCH-0266:animalWelfareContributionType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Beitrag zum Tierwohl</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="standardLabourUnitProLivestockUnit">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Standardarbeitskraft pro Grossvieheinheit (SAKProGVE)</xs:documentation>
+				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="xs:decimal">
 						<xs:minInclusive value="0"/>
@@ -401,6 +420,9 @@
 				</xs:simpleType>
 			</xs:element>
 			<xs:element name="livestockUnitFactor">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">GVE-Faktor</xs:documentation>
+				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="xs:decimal">
 						<xs:minInclusive value="0"/>
@@ -422,13 +444,8 @@
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
-			<xs:element name="taxonomyAuthority">
-				<xs:simpleType>
-					<xs:restriction base="xs:token">
-						<xs:maxLength value="50"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
+			<xs:element name="descriptor" type="eCH-0261:descriptorType"/>
+			<xs:element name="taxonomyAuthority" type="eCH-0261:identifierType"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:simpleType name="biologicalSexType">
@@ -957,6 +974,11 @@
 			<xs:element name="durationSumTotal" type="xs:nonNegativeInteger">
 				<xs:annotation>
 					<xs:documentation xml:lang="de">Enthält die Summe der Tiertage auf dem Betrieb sowie der Sömmerung im Inland und auf angestammten Sömmerungsbetrieben in der ausländischen Grenzzone.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="durationSumTotalCorrectedNutrientBalance" type="xs:nonNegativeInteger" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Ergebnis nach Abzug Nährstoffbilanz. Für die Berechnung der Nährstoffbilanz kann ein Betrieb Abzüge für vorübergehend abwesende Tiere vornehmen. Gründe dafür sind Alpung, Abwesenheit oder Pensionsvieh.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="surveyFarmDetails" type="eCH-0266:surveyFarmDetailsType">
