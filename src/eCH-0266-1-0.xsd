@@ -493,7 +493,13 @@
 			<xs:documentation xml:lang="de">Umtrieb</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="rotationCount" type="xs:positiveInteger"/>
+			<xs:element name="rotationCount">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:fractionDigits value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
 			<xs:element name="typeOfRotation" type="eCH-0266:typeOfRotationType"/>
 		</xs:sequence>
 	</xs:complexType>
