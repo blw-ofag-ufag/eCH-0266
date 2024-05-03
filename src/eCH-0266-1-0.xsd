@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:eCH-0108="http://www.ech.ch/xmlns/eCH-0108/7" xmlns:eCH-0261="http://www.ech.ch/xmlns/eCH-0261/1" xmlns:eCH-0266="http://www.ech.ch/xmlns/eCH-0266/1" targetNamespace="http://www.ech.ch/xmlns/eCH-0266/1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
 	<xs:annotation>
-		<xs:documentation xml:lang="de">Nutztierhaltung - Entwurf, Stand 29.09.2023</xs:documentation>
+		<xs:documentation xml:lang="de">Nutztierhaltung - Entwurf, Stand 03.05.2024</xs:documentation>
 	</xs:annotation>
 	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0261/1"/>
 	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0108/7"/>
@@ -526,7 +526,7 @@
 		<xs:sequence>
 			<xs:element name="item" type="eCH-0261:enumeratedItemType">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Eintrag aus einer Liste (Identifikator, Be-zeichnung, Beschreibung).</xs:documentation>
+					<xs:documentation xml:lang="de">Eintrag aus einer Liste (Identifikator, Bezeichnung, Beschreibung).</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -800,85 +800,11 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="milkUreaReportType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Milchharnstoffwert</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="id" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Identifikator</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="analysisDate" type="xs:date">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Datum der Analyse</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="value" type="eCH-0261:descriptorType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Wert</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="unit">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Einheit (eingeschränkt auf Liter)</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="eCH-0261:unitType">
-						<xs:enumeration value="m3"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="localUnit" type="eCH-0108:localIdType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">BUR-Nr. der zugehörigen lokalen Einheit</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="milkProductionReportType">
-		<xs:annotation>
-			<xs:documentation xml:lang="de">Milchproduktion</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="id" type="eCH-0261:identifierType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Identifikator</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="analysisDate" type="xs:date">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Datum der Analyse</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="value" type="eCH-0261:descriptorType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Wert</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="unit">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">Einheit (eingeschränkt auf Liter)</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="eCH-0261:unitType">
-						<xs:enumeration value="m3"/>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="localUnit" type="eCH-0108:localIdType">
-				<xs:annotation>
-					<xs:documentation xml:lang="de">BUR-Nr. der zugehörigen lokalen Einheit</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
 	<!--Livestock-->
 	<xs:complexType name="previousYearLivestockSummaryReportType">
 		<xs:annotation>
-			<xs:documentation xml:lang="de"/>
-			<xs:documentation xml:lang="en"> This defines the animal stock per location andreporting source on year-round facilities. The report is for the previousyear vis-à-vis the report date.</xs:documentation>
+			<xs:documentation xml:lang="de">Dieses Element beschreibt einen Bericht über den Tierbestand pro Standort und Berichtsquelle für ganzjährige Einrichtungen. Der Bericht bezieht sich auf das Vorjahr im Vergleich zum Berichtsdatum.</xs:documentation>
+			<xs:documentation xml:lang="en">This defines the animal stock per location and reporting source on year-round facilities. The report is for the previousyear vis-à-vis the report date.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="animalStock" type="eCH-0266:animalStockType" maxOccurs="unbounded"/>
@@ -891,14 +817,14 @@
 		<xs:sequence>
 			<xs:element name="contributionYear" type="xs:gYear">
 				<xs:annotation>
-					<xs:documentation xml:lang="de"> Enthält das Jahr, in welche dieDaten erhoben wurden. </xs:documentation>
-					<xs:documentation xml:lang="en"> The year for which the data isreported. In practice this will be the year previous to that ofthe report date. </xs:documentation>
+					<xs:documentation xml:lang="de">Enthält das Jahr, in welche die Daten erhoben wurden.</xs:documentation>
+					<xs:documentation xml:lang="en">The year for which the data is reported. In practice this will be the year previous to that of the report date.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="reportDate" type="xs:date">
 				<xs:annotation>
-					<xs:documentation xml:lang="de"> Enthält das Datum des Berichts bzw.der Datenübertragung. </xs:documentation>
-					<xs:documentation xml:lang="en"> The date on which the report wascreated or on which the data transmission was effected. </xs:documentation>
+					<xs:documentation xml:lang="de">Enthält das Datum des Berichts bzw. der Datenübertragung.</xs:documentation>
+					<xs:documentation xml:lang="en">The date on which the report was created or on which the data transmission was effected.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="mainLocalUnit" type="eCH-0108:localIdType">
@@ -918,7 +844,7 @@
 			</xs:element>
 			<xs:element name="responsiblePerson" type="eCH-0261:personIdentifierType">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Reporter and/or representative of the localUnit.</xs:documentation>
+					<xs:documentation xml:lang="de">Person, die den Bericht erstellt und/oder für die lokale Einheit verantwortlich ist.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:choice>
@@ -941,9 +867,8 @@
 	</xs:complexType>
 	<xs:complexType name="livestockReportedViaAnimalTracingType">
 		<xs:annotation>
-			<xs:documentation xml:lang="en">This node contains contains information regardingcattle, equidae, sheep, goats, and bison. Do not use if the the animal in question belongsto another category.</xs:documentation>
-			<xs:documentation xml:lang="de">Ce nœud contient les données BDTA pour les bovins, les équidés, les moutons, les chèvres et les bisons.Il ne peut pas être livré pour les autres catégories d’animaux</xs:documentation>
-			<xs:documentation xml:lang="de">Enthält die TVD-Daten für Rindvieh,Tiere der Pferdegattung, Schafe, Ziegen und Bisons.Für die anderen Tierkategorien darf dieser Knoten nicht übermittelt werden</xs:documentation>
+			<xs:documentation xml:lang="en">This node contains contains information regarding cattle, equidae, sheep, goats, and bison. Do not use if the the animal in question belongs to another category.</xs:documentation>
+			<xs:documentation xml:lang="de">Enthält die TVD-Daten für Rindvieh, Tiere der Pferdegattung, Schafe, Ziegen und Bisons. Für die anderen Tierkategorien darf dieser Knoten nicht übermittelt werden.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="animalTracingDataOriginal" type="eCH-0266:livestockReportViaAnimalTracingOriginalType"/>
@@ -988,12 +913,12 @@
 			</xs:element>
 			<xs:element name="summeringInlandDetails" type="eCH-0266:summeringInlandDetailsType" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Dieser Knoten enthält die TVD-Daten zur Sömmerung im Inland.→ Dieser Knoten ist zwingend zu liefern, wenn Tiere im Inland gesömmert wurden (ohne Bisons).</xs:documentation>
+					<xs:documentation xml:lang="de">Dieser Knoten enthält die TVD-Daten zur Sömmerung im Inland. Dieser Knoten ist zwingend zu liefern, wenn Tiere im Inland gesömmert wurden (ohne Bisons).</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="summeringAbroadDetails" type="eCH-0266:summeringAbroadDetailsType" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Dieser Knoten enthält die TVD-Daten zur Sömmerung auf angestammten Sömmerungsbetrieben in der ausländischen Grenzzone (ohne Bisons).→ Dieser Knoten ist zwingend zu liefern, wenn Tiere auf angestammten Sömmerungsbetrieben in der ausländischen Grenzzone gesömmert wurden (ohne Bisons).</xs:documentation>
+					<xs:documentation xml:lang="de">Dieser Knoten enthält die TVD-Daten zur Sömmerung auf angestammten Sömmerungsbetrieben in der ausländischen Grenzzone (ohne Bisons). Dieser Knoten ist zwingend zu liefern, wenn Tiere auf angestammten Sömmerungsbetrieben in der ausländischen Grenzzone gesömmert wurden (ohne Bisons).</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -1010,7 +935,7 @@
 			</xs:element>
 			<xs:element name="quantity">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Enthält die Anzahl Tiere auf dem Betrieb aus den TVD-Daten.→ Gezählte Tiertage auf dem Betrieb / Tage des Jahres (Basisinformation für Nährstoffbilanz)</xs:documentation>
+					<xs:documentation xml:lang="de">Enthält die Anzahl Tiere auf dem Betrieb aus den TVD-Daten. Gezählte Tiertage auf dem Betrieb / Tage des Jahres (Basisinformation für Nährstoffbilanz)</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="xs:decimal">
@@ -1020,7 +945,7 @@
 			</xs:element>
 			<xs:element name="livestockUnit">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Enthält die Anzahl GVE auf dem Betrieb aus den TVD-Daten.→ Gezählte Tiertage / Tage des Jahres * GVE-Faktor</xs:documentation>
+					<xs:documentation xml:lang="de">Enthält die Anzahl GVE auf dem Betrieb aus den TVD-Daten. Gezählte Tiertage / Tage des Jahres * GVE-Faktor</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="xs:decimal">
@@ -1030,7 +955,7 @@
 			</xs:element>
 			<xs:element name="durationSum" type="xs:nonNegativeInteger" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Enthält die Anzahl Tiertage auf dem Betrieb aus den TVD-Daten (inkl. Aufenthalte an Ausstellungen, Tierklinik).→ Auf der TVD gezählte Aufenthaltstage (Übernachtungsregel).</xs:documentation>
+					<xs:documentation xml:lang="de">Enthält die Anzahl Tiertage auf dem Betrieb aus den TVD-Daten (inkl. Aufenthalte an Ausstellungen, Tierklinik). Auf der TVD gezählte Aufenthaltstage (Übernachtungsregel).</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -1042,7 +967,7 @@
 		<xs:sequence>
 			<xs:element name="livestockUnit">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Enthält die Anzahl im Inland gesömmerte GVE aus den TVD-Daten.→ Gezählte Tiertage der Sömmerung im Inland / Tage des Jahres * GVE-Faktor</xs:documentation>
+					<xs:documentation xml:lang="de">Enthält die Anzahl im Inland gesömmerte GVE aus den TVD-Daten. Gezählte Tiertage der Sömmerung im Inland / Tage des Jahres * GVE-Faktor</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="xs:decimal">
@@ -1075,7 +1000,7 @@
 			<xs:element name="livestockUnit">
 				<xs:simpleType>
 					<xs:annotation>
-						<xs:documentation xml:lang="de">Enthält die auf angestammten Sömmerungsbetriebenin der ausländischen Grenzzone gesömmerte GVE aus den TVD-Daten.→ Gezählte Tiertage der Sömmerung auf angestammten Sömmerungsbetrieben in der ausländischen Grenzzone / Tage des Jahres * GVE-Faktor</xs:documentation>
+						<xs:documentation xml:lang="de">Enthält die auf angestammten Sömmerungsbetriebenin der ausländischen Grenzzone gesömmerte GVE aus den TVD-Daten. Gezählte Tiertage der Sömmerung auf angestammten Sömmerungsbetrieben in der ausländischen Grenzzone / Tage des Jahres * GVE-Faktor</xs:documentation>
 					</xs:annotation>
 					<xs:restriction base="xs:decimal">
 						<xs:fractionDigits value="4"/>
@@ -1092,12 +1017,9 @@
 	<xs:complexType name="livestockReportedViaAnimalTracingFinalType">
 		<xs:annotation>
 			<xs:documentation xml:lang="en">Animal tracing data that was corrected by the Canton.</xs:documentation>
-			<!-- reference: we are at page 20 in Merkmalskatalog Edition 2024 -->
 			<xs:documentation xml:lang="de">Enthält die finalen Daten (nachKorrekturen vom Kanton).</xs:documentation>
-			<xs:documentation xml:lang="fr">Contient les données finales (après corrections du canton)</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<!-- do we want to include calculated fields ??? !!!  -->
 			<xs:element name="quantityTotal" type="xs:nonNegativeInteger">
 				<xs:annotation>
 					<xs:documentation xml:lang="de">Enthält den gesamten Bestand der Tierkategorie nach Korrektur Kanton (Tiertage Ganzjahresbetrieb + Tiertage Sömmerung Inland + Tiertage Sömmerung Ausland Angestammt) / Tage des Jahres.</xs:documentation>
@@ -1139,7 +1061,6 @@
 				<xs:annotation>
 					<!-- todo: for me the descriptin is not clear. Are we reporting animal stock "today" ??  or is this a reference to another element in this XSD ?? -->
 					<xs:documentation xml:lang="de">Enthält den Bestand der Tierkategorie am Stichtag.</xs:documentation>
-					<xs:documentation xml:lang="fr">Contient le cheptel de la catégorie d’animaux du jour de référence.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="averageQuantity" type="xs:nonNegativeInteger">
@@ -1154,7 +1075,7 @@
 			</xs:element>
 			<xs:element name="summeringQuantity" type="xs:nonNegativeInteger">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Enthält die Anzahl (Stück) der gesömmerten Tiere im Vorjahrl</xs:documentation>
+					<xs:documentation xml:lang="de">Enthält die Anzahl (Stück) der gesömmerten Tiere im Vorjahr.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="summeringDuration" type="xs:nonNegativeInteger">
