@@ -937,8 +937,8 @@
             <!-- Lars: now using explicit measurementType and unitType based on your example in sumSlaughterWeight earlier -->
             <xs:element name="quantity">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The sum of the slaughter weight in kilograms</xs:documentation>
-                    <xs:documentation xml:lang="de">Summe Schlachtgewicht in Kilogramm</xs:documentation>
+                    <xs:documentation xml:lang="en">The quantity</xs:documentation>
+                    <xs:documentation xml:lang="de">Menge</xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                     <xs:complexContent>
