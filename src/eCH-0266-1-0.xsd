@@ -6,10 +6,8 @@
     <xs:annotation>
         <xs:documentation xml:lang="de">Nutztierhaltung - Entwurf, Stand 03.05.2024</xs:documentation>
     </xs:annotation>
-    <!--	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0261/1"/>-->
-    <!--	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0108/7"/>-->
-    <xs:import namespace="http://www.ech.ch/xmlns/eCH-0261/1" schemaLocation="./eCH-0261-1-0.xsd"/>
-    <xs:import namespace="http://www.ech.ch/xmlns/eCH-0108/7" schemaLocation="./eCH-0108-7-0.xsd"/>
+    	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0261/1"/>
+    	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0108/7"/>
     <!-- Main data types -->
     <xs:complexType name="individualAnimalType">
         <xs:annotation>
