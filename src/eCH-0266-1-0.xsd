@@ -1010,12 +1010,12 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="reportDate" type="xs:date">
+            <xs:element name="declarationDate" type="xs:date">
+                <!-- Dani, Beschreibung korrekt? -->
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">The date on which the report was created or on which the data
-                        transmission was effected.
+                    <xs:documentation xml:lang="en">the date on which the data is valid.
                     </xs:documentation>
-                    <xs:documentation xml:lang="de">Enthält das Datum des Berichts bzw. der Datenübertragung.
+                    <xs:documentation xml:lang="de">Das Datum an dem die Daten gültig sind.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
