@@ -6,8 +6,8 @@
     <xs:annotation>
         <xs:documentation xml:lang="de">Nutztierhaltung - Entwurf, Stand 03.05.2024</xs:documentation>
     </xs:annotation>
-    	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0261/1"/>
-    	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0108/7"/>
+    <xs:import namespace="http://www.ech.ch/xmlns/eCH-0261/1"/>
+    <xs:import namespace="http://www.ech.ch/xmlns/eCH-0108/7"/>
     <!-- Main data types -->
     <xs:complexType name="individualAnimalType">
         <xs:annotation>
@@ -894,8 +894,8 @@
             <xs:documentation xml:lang="en">Unit restriction for nutrient needs</xs:documentation>
         </xs:annotation>
         <xs:restriction base="eCH-0261:unitType">
-            <xs:enumeration value="%" />
-            <xs:enumeration value="kg/m3" />
+            <xs:enumeration value="%"/>
+            <xs:enumeration value="kg/m3"/>
         </xs:restriction>
     </xs:simpleType>
 
@@ -907,7 +907,7 @@
         <xs:complexContent>
             <xs:extension base="eCH-0261:measurementType">
                 <xs:sequence>
-                    <xs:element name="value" type="xs:decimal" />
+                    <xs:element name="value" type="xs:decimal"/>
                     <xs:element name="unit" type="eCH-0266:nutrientNeedsRestrictedUnitType"/>
                 </xs:sequence>
             </xs:extension>
