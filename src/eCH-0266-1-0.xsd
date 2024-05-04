@@ -233,6 +233,7 @@
 			</xs:element>
 			<xs:element name="utilisation" type="eCH-0261:identifierType" minOccurs="0">
 				<xs:annotation>
+					<xs:documentation xml:lang="en">Utilisation</xs:documentation>
 					<xs:documentation xml:lang="de">Nutzungsausrichtung</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -567,6 +568,7 @@
 	</xs:complexType>
 	<xs:simpleType name="typeOfRotationType">
 		<xs:annotation>
+			<xs:documentation xml:lang="en">Type of rotation</xs:documentation>
 			<xs:documentation xml:lang="de">Umtriebsart</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:token">
@@ -592,11 +594,13 @@
 	</xs:simpleType>
 	<xs:complexType name="taxonomyAuthorityType">
 		<xs:annotation>
+			<xs:documentation xml:lang="en">Authority source</xs:documentation>
 			<xs:documentation xml:lang="de">Fachquelle</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="item" type="eCH-0261:enumeratedItemType">
 				<xs:annotation>
+					<xs:documentation xml:lang="en">Entry from a list containing identifier and descriptor.</xs:documentation>
 					<xs:documentation xml:lang="de">Eintrag aus einer Liste (Identifikator, Bezeichnung, Beschreibung).</xs:documentation>
 				</xs:annotation>
 			</xs:element>
