@@ -889,6 +889,34 @@
             </xs:element>
         </xs:sequence>
     </xs:complexType>
+
+    <!-- Lars: this is new. Essentially a derivative of unitType in eCH-0261 -->
+    <xs:simpleType name="nutrientNeedsRestrictedUnitType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Unit restriction for nutrient needs</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="eCH-0261:unitType">
+            <xs:enumeration value="%" />
+            <xs:enumeration value="kg/m3" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Lars: this is new. Essentially a derivative of measurementType in eCH-0261 -->
+    <xs:complexType name="nutrientNeedsMeasurementType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">A measurement definition for nutrient needs</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="eCH-0261:measurementType">
+                <xs:sequence>
+                    <xs:element name="value" type="xs:decimal" />
+                    <xs:element name="unit" type="eCH-0266:nutrientNeedsRestrictedUnitType"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+
     <xs:complexType name="nutrientNeedOrExcretionType">
         <xs:annotation>
             <xs:documentation xml:lang="en">Nutrient need or excretion definition</xs:documentation>
@@ -934,33 +962,19 @@
                     <xs:documentation xml:lang="de">Raumgewicht</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <!-- Lars: now using explicit measurementType and unitType based on your example in sumSlaughterWeight earlier -->
-            <xs:element name="quantity">
+            <!-- Lars: Here we are using an explicit derived measurementType and unitType.
+               I would be interested to know if you concur: I think this isn't great but better
+               than copy-pasting an entire definition from of measurementType from 0261.
+               If you agree, we could delete measurementType in this file
+               and eliminate references to it such as birthWeight and slaughterWeight, above.
+               Then we would a similar approach in which we require a measurementType
+               restricted to kg for those attributes.
+            -->
+            <xs:element name="quantity" type="eCH-0266:nutrientNeedsMeasurementType">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">The sum of the slaughter weight in kilograms</xs:documentation>
                     <xs:documentation xml:lang="de">Summe Schlachtgewicht in Kilogramm</xs:documentation>
                 </xs:annotation>
-                <xs:complexType>
-                    <xs:complexContent>
-                        <xs:restriction base="eCH-0266:measurementType">
-                            <xs:sequence>
-                                <xs:element name="value">
-                                    <xs:simpleType>
-                                        <xs:restriction base="xs:decimal"/>
-                                    </xs:simpleType>
-                                </xs:element>
-                                <xs:element name="unit">
-                                    <xs:simpleType>
-                                        <xs:restriction base="eCH-0261:unitType">
-                                            <xs:enumeration value="%"/>
-                                            <xs:enumeration value="kg/m3"/>
-                                        </xs:restriction>
-                                    </xs:simpleType>
-                                </xs:element>
-                            </xs:sequence>
-                        </xs:restriction>
-                    </xs:complexContent>
-                </xs:complexType>
             </xs:element>
         </xs:sequence>
     </xs:complexType>
