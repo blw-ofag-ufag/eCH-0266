@@ -14,3 +14,6 @@
 .project
 .classpath
 .settings/
+/src/*.bkp
+/src/eCH-0108-7-0.xsd
+/src/eCH-0261-1-0.xsd
