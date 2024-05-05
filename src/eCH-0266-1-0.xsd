@@ -542,9 +542,9 @@
 			<xs:documentation xml:lang="de">Alterseinschränkung</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="id" type="eCH-0261:identifierType">
+			<xs:element name="Code" type="eCH-0261:identifierType">
 				<xs:annotation>
-					<xs:documentation xml:lang="de">Identifikator</xs:documentation>
+					<xs:documentation xml:lang="de">Code</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="descriptor" type="eCH-0261:descriptorType">
