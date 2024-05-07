@@ -1,0 +1,177 @@
+<mxfile host="Electron" modified="2024-05-07T15:16:34.504Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="Nmkva0UOG6tCQOtYAxOi" version="24.2.5" type="device">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="3040" dy="697" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="IQKzHhust3R2YVrMN2TA-7" value="" style="swimlane;startSize=0;sketch=0;fontFamily=Verdana;strokeWidth=2;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="194.25" y="40" width="228.3" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="IQKzHhust3R2YVrMN2TA-8" value="&lt;h1&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;eCH-0266&lt;/span&gt;&lt;/h1&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;strokeWidth=2;fontFamily=Verdana;" parent="IQKzHhust3R2YVrMN2TA-7" vertex="1">
+          <mxGeometry x="11.3" width="195.7" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="IQKzHhust3R2YVrMN2TA-9" value="Livestock Report" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=2;fontFamily=Verdana;" parent="IQKzHhust3R2YVrMN2TA-7" vertex="1">
+          <mxGeometry x="19.6" y="50" width="226.4" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="IQKzHhust3R2YVrMN2TA-10" value="For Visualisation Purposes Only&lt;br&gt;Not purely correct UML!&lt;br&gt;1-1 correspondence to XSD does &lt;br&gt;not exist.&lt;div&gt;&lt;br&gt;&lt;div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=2;fontFamily=Verdana;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="190" y="194" width="258" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="299.3800000000001" y="317.94000000000005" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-0" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LivestockSummaryReport&lt;/b&gt;&lt;/p&gt;&lt;br&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Verdana;html=1;sketch=0;strokeWidth=2;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="200" y="240" width="222.55" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;AnimalStock&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;&lt;span style=&quot;font-weight: normal;&quot;&gt;+contributionYear&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&amp;nbsp;+declarationDate&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&amp;nbsp;+mainLocalUnit:eCH-0108:localIdType&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&amp;nbsp;+surveyLocalUnit: eCH-0108:localIdType&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Verdana;html=1;sketch=0;strokeWidth=2;fontStyle=1" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="515.75" y="180" width="274.25" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-2" value="" style="endArrow=none;html=1;sketch=0;fontFamily=Verdana;curved=1;startArrow=classic;startFill=1;endFill=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="laVXNykyTYGjtu9MN26C-1" target="laVXNykyTYGjtu9MN26C-0" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="841.75" y="22" as="sourcePoint" />
+            <mxPoint x="924.75" y="78" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-3" value="1-*" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="448" y="240" width="88" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;AnimalCategoryStructural&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Verdana;html=1;sketch=0;strokeWidth=2;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="1020" y="280" width="208.3" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;&lt;i&gt;AbstractAnimal&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;br&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Verdana;html=1;sketch=0;strokeWidth=2;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="840" y="104" width="280" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-9" value="" style="endArrow=none;html=1;sketch=0;fontFamily=Verdana;curved=1;startArrow=block;startFill=0;endFill=0;entryX=0.147;entryY=-0.036;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="laVXNykyTYGjtu9MN26C-5" target="laVXNykyTYGjtu9MN26C-4" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="778.75" y="262" as="sourcePoint" />
+            <mxPoint x="935.75" y="245" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-10" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;AnimalCategoryPRIF&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;&amp;nbsp;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Verdana;html=1;sketch=0;strokeWidth=2;fontStyle=1" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="818.3" y="280" width="168.3" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-11" value="" style="endArrow=none;html=1;sketch=0;fontFamily=Verdana;curved=1;startArrow=block;startFill=0;endFill=0;entryX=0.554;entryY=0.013;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.442;exitY=0.983;exitDx=0;exitDy=0;exitPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="laVXNykyTYGjtu9MN26C-5" target="laVXNykyTYGjtu9MN26C-10" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="787.75" y="463" as="sourcePoint" />
+            <mxPoint x="934.75" y="465" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-12" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;&lt;i&gt;AbstractReportedLivestock&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Verdana;html=1;sketch=0;strokeWidth=2;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="400" y="380" width="280" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-13" value="" style="endArrow=none;html=1;sketch=0;fontFamily=Verdana;curved=1;startArrow=classic;startFill=1;endFill=0;exitX=0.887;exitY=-0.002;exitDx=0;exitDy=0;exitPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="laVXNykyTYGjtu9MN26C-12" target="laVXNykyTYGjtu9MN26C-1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="918.75" y="390" as="sourcePoint" />
+            <mxPoint x="778.75" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-14" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;LivestockReportedViaAnimalTracing&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;&amp;nbsp;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Verdana;html=1;sketch=0;strokeWidth=2;fontStyle=1" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="270" y="547" width="320" height="75.87" as="geometry" />
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-16" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;SelfReportedLivestock&lt;/b&gt;&lt;/p&gt;&lt;br&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+declarationDayQuantity&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+averageQuantity&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;+summeringQuantity&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;+summeringDuration&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Verdana;html=1;sketch=0;strokeWidth=2;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="768.3" y="400" width="291.7" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-17" value="" style="endArrow=none;html=1;sketch=0;fontFamily=Verdana;curved=1;startArrow=block;startFill=0;endFill=0;entryX=0.69;entryY=-0.007;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" target="laVXNykyTYGjtu9MN26C-14" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="500" as="sourcePoint" />
+            <mxPoint x="490" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-18" value="" style="endArrow=none;html=1;sketch=0;fontFamily=Verdana;curved=1;startArrow=block;startFill=0;endFill=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fontStyle=1;exitX=0.997;exitY=0.395;exitDx=0;exitDy=0;exitPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="laVXNykyTYGjtu9MN26C-12" target="laVXNykyTYGjtu9MN26C-16" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="865.75" y="520" as="sourcePoint" />
+            <mxPoint x="929.75" y="571" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-23" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;LivestockReportViaAnimalTracingDataOriginal&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;&lt;span style=&quot;font-weight: normal;&quot;&gt;+quantityTotal&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&amp;nbsp;+livestockUnitTotal&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&amp;nbsp;+durationSumTotal&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&amp;nbsp;+&lt;/span&gt;&lt;span style=&quot;background-color: initial; font-weight: 400;&quot;&gt;durationSumTotalCorrectedNutrientBalance&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Verdana;html=1;sketch=0;strokeWidth=2;fontStyle=1" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry y="687.94" width="330" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-24" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;LivestockReportViaAnimalTracingDataFinal&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&amp;nbsp;+quantityTotal&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;&lt;span style=&quot;font-weight: normal;&quot;&gt;+livestockUnitTotal&amp;nbsp;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Verdana;html=1;sketch=0;strokeWidth=2;fontStyle=1" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="717.54" y="585" width="330" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-25" value="" style="endArrow=none;html=1;sketch=0;fontFamily=Verdana;curved=1;startArrow=classic;startFill=1;endFill=0;exitX=0.903;exitY=-0.011;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.161;entryY=0.989;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="laVXNykyTYGjtu9MN26C-23" target="laVXNykyTYGjtu9MN26C-14" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="662" y="400" as="sourcePoint" />
+            <mxPoint x="659" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-26" value="" style="endArrow=none;html=1;sketch=0;fontFamily=Verdana;curved=1;startArrow=classic;startFill=1;endFill=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="laVXNykyTYGjtu9MN26C-24" target="laVXNykyTYGjtu9MN26C-14" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="395" y="721" as="sourcePoint" />
+            <mxPoint x="392" y="652" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-27" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;SurveyFarmDetails&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;&lt;span style=&quot;font-weight: normal;&quot;&gt;+declarationDayQuantity&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&amp;nbsp;+quantity&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&amp;nbsp;+livestockUnit&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&amp;nbsp;+durationSum&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Verdana;html=1;sketch=0;strokeWidth=2;fontStyle=1" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="440" y="800" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-29" value="" style="endArrow=none;html=1;sketch=0;fontFamily=Verdana;curved=1;startArrow=classic;startFill=1;endFill=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="laVXNykyTYGjtu9MN26C-27" target="laVXNykyTYGjtu9MN26C-23" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="511" y="719" as="sourcePoint" />
+            <mxPoint x="477" y="652" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-30" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;SummeringInlandDetails&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&amp;nbsp;+livestockUnit&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&amp;nbsp;+normedLivestockUnit&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&amp;nbsp;+durationSum&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Verdana;html=1;sketch=0;strokeWidth=2;fontStyle=1" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="440" y="660" width="236.6" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-31" value="" style="endArrow=none;html=1;sketch=0;fontFamily=Verdana;curved=1;startArrow=classic;startFill=1;endFill=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="laVXNykyTYGjtu9MN26C-30" target="laVXNykyTYGjtu9MN26C-23" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="375.0464000000002" y="897.5799999999999" as="sourcePoint" />
+            <mxPoint x="223" y="840" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-32" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;SummeringAbroadDetails&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&amp;nbsp;+livestockUnit&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&amp;nbsp;+durationSum&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Verdana;html=1;sketch=0;strokeWidth=2;fontStyle=1" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="440" y="950" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-33" value="" style="endArrow=none;html=1;sketch=0;fontFamily=Verdana;curved=1;startArrow=classic;startFill=1;endFill=0;entryX=0.908;entryY=1.016;entryDx=0;entryDy=0;exitX=0.001;exitY=0.325;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="laVXNykyTYGjtu9MN26C-32" target="laVXNykyTYGjtu9MN26C-23" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="404" y="910" as="sourcePoint" />
+            <mxPoint x="341" y="840" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-35" value="" style="endArrow=none;html=1;sketch=0;fontFamily=Verdana;curved=1;startArrow=classic;startFill=1;endFill=0;exitX=-0.005;exitY=0.711;exitDx=0;exitDy=0;exitPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="laVXNykyTYGjtu9MN26C-5" target="laVXNykyTYGjtu9MN26C-1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="662" y="400" as="sourcePoint" />
+            <mxPoint x="659" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-36" value="" style="endArrow=none;html=1;sketch=0;fontFamily=Verdana;curved=1;startArrow=classic;startFill=1;endFill=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="laVXNykyTYGjtu9MN26C-30" target="laVXNykyTYGjtu9MN26C-24" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="450" y="738" as="sourcePoint" />
+            <mxPoint x="340" y="746" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-37" value="" style="endArrow=none;html=1;sketch=0;fontFamily=Verdana;curved=1;startArrow=classic;startFill=1;endFill=0;exitX=1.001;exitY=0.463;exitDx=0;exitDy=0;exitPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="laVXNykyTYGjtu9MN26C-27" target="laVXNykyTYGjtu9MN26C-24" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="687" y="730" as="sourcePoint" />
+            <mxPoint x="836" y="666" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="laVXNykyTYGjtu9MN26C-38" value="" style="endArrow=none;html=1;sketch=0;fontFamily=Verdana;curved=1;startArrow=classic;startFill=1;endFill=0;exitX=1.005;exitY=0.347;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.52;entryY=1.007;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="laVXNykyTYGjtu9MN26C-32" target="laVXNykyTYGjtu9MN26C-24" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="690" y="866" as="sourcePoint" />
+            <mxPoint x="888" y="666" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b2sNiscNtj913xcPX4a7-0" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;DetentionForm&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;&amp;nbsp;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Verdana;html=1;sketch=0;strokeWidth=2;fontStyle=1" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="1098.3" y="450.00000000000006" width="168.3" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="b2sNiscNtj913xcPX4a7-1" value="" style="endArrow=none;html=1;sketch=0;fontFamily=Verdana;curved=1;startArrow=classic;startFill=1;endFill=0;entryX=1.005;entryY=0.576;entryDx=0;entryDy=0;entryPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="b2sNiscNtj913xcPX4a7-0" target="laVXNykyTYGjtu9MN26C-16" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="687" y="730" as="sourcePoint" />
+            <mxPoint x="812" y="671" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1g88eT51Qicg3xkV5nTj-0" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;HusbandryForm&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&amp;nbsp;&amp;nbsp;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Verdana;html=1;sketch=0;strokeWidth=2;fontStyle=1" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="1098.3" y="580" width="168.3" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="1g88eT51Qicg3xkV5nTj-1" value="" style="endArrow=none;html=1;sketch=0;fontFamily=Verdana;curved=1;startArrow=classic;startFill=1;endFill=0;entryX=0.999;entryY=0.886;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.12;exitY=-0.033;exitDx=0;exitDy=0;exitPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="1g88eT51Qicg3xkV5nTj-0" target="laVXNykyTYGjtu9MN26C-16" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1108" y="492" as="sourcePoint" />
+            <mxPoint x="1071" y="491" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
