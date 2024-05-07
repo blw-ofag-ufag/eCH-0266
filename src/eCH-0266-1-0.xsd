@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:eCH-0108="http://www.ech.ch/xmlns/eCH-0108/7" xmlns:eCH-0261="http://www.ech.ch/xmlns/eCH-0261/1" xmlns:eCH-0266="http://www.ech.ch/xmlns/eCH-0266/1" targetNamespace="http://www.ech.ch/xmlns/eCH-0266/1" elementFormDefault="qualified" version="1.0">
 	<xs:annotation>
-		<xs:documentation xml:lang="de">Nutztierhaltung - Entwurf, Stand 03.05.2024</xs:documentation>
+		<xs:documentation xml:lang="de">Agrardaten - Nutztierhaltung</xs:documentation>
 	</xs:annotation>
 	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0261/1"/>
 	<xs:import namespace="http://www.ech.ch/xmlns/eCH-0108/7"/>
