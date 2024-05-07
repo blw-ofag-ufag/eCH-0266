@@ -436,7 +436,7 @@
 					<xs:documentation xml:lang="de">Angabe, ob Nachkommen existieren</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="lifeStage" type="eCH-0266:lifeStageType" minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="lifeStage" type="eCH-0261:identifierType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation xml:lang="en">General information pertaining to the age of the animal.</xs:documentation>
 					<xs:documentation xml:lang="de">Generelle Angabe über das Alter des Tieres.</xs:documentation>
