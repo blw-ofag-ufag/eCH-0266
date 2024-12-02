@@ -314,7 +314,7 @@
 			</xs:element>
 			<xs:element name="animalHoldingForm" type="eCH-0261:identifierType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation xml:lang="en">An identifier of the animal holding defining the keeping of the animals.</xs:documentation>
+					<xs:documentation xml:lang="en">An identifier of the animal holding form defining the keeping of the animals.</xs:documentation>
 					<xs:documentation xml:lang="de">Identifikator der Tierhaltung in der sich die Tiergruppe aufhält.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -785,7 +785,7 @@
 			</xs:element>
 			<xs:element name="permittedForAnimal" type="eCH-0261:identifierType" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation xml:lang="en">Allowed animal categories for a specific animal holdinf type (enables e.g. filtering and validation options). References a code of a species, which is defined by "zoologicalAnimalType".</xs:documentation>
+					<xs:documentation xml:lang="en">Allowed animal categories for a specific animal holding type (enables e.g. filtering and validation options). References a code of a species, which is defined by "zoologicalAnimalType".</xs:documentation>
 					<xs:documentation xml:lang="de">Erlaubte Tierkategorien für eine bestimmte Haltungsform (ermöglicht z.B. Filterungs- und Validierungsmöglichkeiten). Referenziert einen Code einer Spezies, welcher durch "zoologicalAnimalType" definiert wird.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -1186,7 +1186,7 @@
 					<xs:documentation xml:lang="de">Enthält die Haltungsform für Schweine und Geflügel und ist nur für diese Gattungen zwingend. Für andere Gattungen soll diese Information nicht geliefert werden.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="animalHoldingryForm" type="eCH-0261:identifierType" minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="animalHoldingForm" type="eCH-0261:identifierType" minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
 					<xs:documentation xml:lang="en">An identifier of the animal holding form defining the keeping of the animals.</xs:documentation>
 					<xs:documentation xml:lang="de">Identifikator der Tierhaltung in der sich die Tiergruppe aufhält.</xs:documentation>
