@@ -6,7 +6,7 @@ Primarily, this repo contains:
 * XSDs
 * UML diagrams
 
-The main branch contains the work in progress. Proposals are in version or feature branches. Published versions are in Releases. Released versions are published additionally on eCH and on BLW/OFAG/UFAG websites.
+The main branch contains the work in progress. Proposals are in version or feature branches. Published versions are in releases. Released versions are published additionally on eCH and on BLW/OFAG/UFAG websites.
 
 For broader discussions, please see https://github.com/blw-ofag-ufag/eCH-0266/discussions
 
@@ -15,14 +15,14 @@ This section explains how this repository is governed.
 
 ## Membership and roles management
 
-- All members of the Expert group outside the of FOAG receive the **“Outside collaborator”** organization membership. They have the “Read” role for all the eCH repositories.
+- All members of the Expert group outside of the FOAG receive the **“Outside collaborator”** organization membership. They have the “Read” role for all the eCH repositories.
 Additionally, they may:
 
   - Waive this role for selected eCH repos where they are not directly involved (not part of the Expert group) and do not plan to get involved with.
 
   - Waive this role completely if they do not plan to contribute on GitHub at all and consider this pure spam.
 
-  - Ask for the **Write** role in the Repo(s) associated with their own Arbeitsgruppe(n) if they plan to contribute directly with Pull Requests (PR).
+  - Ask for the **Write** role in the repo(s) associated with their own Arbeitsgruppe(n) if they plan to contribute directly with Pull Requests (PR).
 
 - Regular external developers are integrated into the organization as **“Outside Collaborator”** and receive by default the **Write** role on all eCH repositories.
 
@@ -87,7 +87,7 @@ All of the eCH repositories adhere to the following general branch organization:
 
 
 - **Release branches** named after the release version and prefixed with “Release-”(e.g. “Release-1.3.0”)
-  - The Release branches coalesce all the changes needed for the future release of the new version.
+  - Release branches coalesce all the changes needed for the future release of the new version.
   - Release branches are opened by the CCDT team only.
   - Release branches MAY be published on GitHub as pre-releases (see “Review and publishing process“ below).
 
@@ -106,7 +106,7 @@ The review and publishing process of the code in this repository has 4 main step
 
 2. Team CCDT reviews the PR and merges the code into the appropriate Release branch. **Only the CCDT Team can merge those PRs.**
 
-3. Once a Release is considered complete, the CCDT Team MUST publish a pre-release from this branch. **Exception** to that is a patch version, which does not need an eCH review process. A patch release can thus be merged into main and published as a new version by the CCDT alone.
+3. Once a release is considered complete, the CCDT Team MUST publish a pre-release from this branch. **Exception** to that is a patch version, which does not need an eCH review process. A patch release can thus be merged into main and published as a new version by the CCDT alone.
 
     Pre-releases are tagged according to the versioning rules (see above) and given a meaningful name.
     ![image](https://github.com/user-attachments/assets/8c030ce4-983a-4806-9942-62aa4873cb66)
@@ -118,7 +118,7 @@ The review and publishing process of the code in this repository has 4 main step
     The pre-release then follow the eCH validation process according to the change scope (minor, major). The code and documentation of the pre-release is sent to the relevant stakeholders that have the opportunity to ask for modifications or accept the new release. 
     See [eCH-0003 - Leitfaden zur Genehmigung von Anträgen](https://ech.ch/de/ech/ech-0003) and [eCH-0150 - Change und Release Management von eCH-Standards](https://ech.ch/de/ech/ech-0150).
 
-4. Once the eCH validation process is done and the Release is accepted, the CCDT merges the Release branch into main.
+4. Once the eCH validation process is done and the release is accepted, the CCDT merges the release branch into main.
 
     ![image](https://github.com/user-attachments/assets/3f5f0ead-a3a9-42bf-96cd-52b1872df2f9)
 
