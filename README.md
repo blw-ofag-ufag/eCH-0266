@@ -1,6 +1,7 @@
 # eCH-0266: Agrardaten -- Nutztierhaltung
 
-This is the repository for technical artefacts related to this specification.
+This is the repository for technical artefacts related to the specification 0266. The currently valid version is published on the eCH-Website https://www.ech.ch/de/ech/ech-0266.
+
 Primarily, this repo contains:
 
 * XSDs
