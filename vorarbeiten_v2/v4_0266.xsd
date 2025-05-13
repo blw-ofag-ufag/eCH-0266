@@ -19,36 +19,6 @@
             <xs:documentation xml:lang="en">BLA</xs:documentation>
         </xs:annotation>
         <xs:all>
-            <xs:element name="PendulumHusbandry" type="xs:int">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Pendeltierhaltung</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="OriginTVDNumber" type="eCH-0261:identifierType">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">TVD-Nummer des Herkunftsbetriebs</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="NotificationState" type="eCH-0261:enumeratedItemType">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Status Fehlende Meldung des Equiden.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="LeavingDate" type="xs:dateTime">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Abgangdatum auf abgefragtem Betrieb</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="Husbandry" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Angaben zum aktuellen Standort</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="GoatHistoryState" type="eCH-0261:enumeratedItemType">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Befund der Tiergeschichte</xs:documentation>
-                </xs:annotation>
-            </xs:element>
             <xs:element name="CattleHistoryState" type="eCH-0261:enumeratedItemType">
                 <xs:annotation>
                     <xs:documentation xml:lang="de">Befund der Tiergeschichte</xs:documentation>
@@ -59,14 +29,39 @@
                     <xs:documentation xml:lang="de">Aktuelle Tierhaltung</xs:documentation>
                 </xs:annotation>
             </xs:element>
+            <xs:element name="Husbandry" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Angaben zum aktuellen Standort</xs:documentation>
+                </xs:annotation>
+            </xs:element>
             <xs:element name="ArrivalDate" type="xs:dateTime">
                 <xs:annotation>
                     <xs:documentation xml:lang="de">Zugangsdatum auf abgefragten Betrieb</xs:documentation>
                 </xs:annotation>
             </xs:element>
+            <xs:element name="OriginTVDNumber" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">TVD-Nummer des Herkunftsbetriebs</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="LeavingDate" type="xs:dateTime">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Abgangdatum auf abgefragtem Betrieb</xs:documentation>
+                </xs:annotation>
+            </xs:element>
             <xs:element name="AllYearHusbandry" type="xs:boolean">
                 <xs:annotation>
                     <xs:documentation xml:lang="de">Aktuelle Ganzjahrestierhaltung</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PendulumHusbandry" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Pendeltierhaltung</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="NotificationState" type="eCH-0261:enumeratedItemType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Status Fehlende Meldung des Equiden.</xs:documentation>
                 </xs:annotation>
             </xs:element>
         </xs:all>
@@ -77,19 +72,44 @@
             <xs:documentation xml:lang="en">BLA</xs:documentation>
         </xs:annotation>
         <xs:all>
-            <xs:element name="WithersClass" type="eCH-0261:enumeratedItemType">
+            <xs:element name="Name" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation xml:lang="de">WiderristhÃ¶he</xs:documentation>
+                    <xs:documentation xml:lang="de">Name des Equiden, Kalb, Ziege</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="SportBreedingName" type="xs:string">
+            <xs:element name="ChipNumber" type="eCH-0261:identifierType">
                 <xs:annotation>
-                    <xs:documentation xml:lang="de">Sport- oder Zuchtname</xs:documentation>
+                    <xs:documentation xml:lang="de">Chipnummer</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="RaceColor" type="eCH-0261:enumeratedItemType">
+            <xs:element name="species" type="eCH-0261:enumeratedItemType">
                 <xs:annotation>
-                    <xs:documentation xml:lang="de">Rassenfarbe</xs:documentation>
+                    <xs:documentation xml:lang="de">Spezies / Art</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="genus" type="nan">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Gattung</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Breed" type="eCH-0261:enumeratedItemType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Rasse</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="BirthDate" type="xs:dateTime">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Geburtsdatum</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="BirthWeight" type="xs:decimal">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Geburtsgewicht in kg</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="nan" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">nan</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="PlaceOfBirth" type="xs:string">
@@ -97,14 +117,44 @@
                     <xs:documentation xml:lang="de">Geburtsort</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="Name" type="xs:string">
+            <xs:element name="weight" type="xs:decimal">
                 <xs:annotation>
-                    <xs:documentation xml:lang="de">Name des Equiden, Kalb, Ziege</xs:documentation>
+                    <xs:documentation xml:lang="de">Gewichtsmessung in Kg</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DeathTime" type="xs:dateTime">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Zeitpunkt des Todes</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SportBreedingName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Sport- oder Zuchtname</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="sex" type="eCH-0261:enumeratedItemType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Geschlecht</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="IsCastrated" type="xs:boolean">
                 <xs:annotation>
                     <xs:documentation xml:lang="de">true: Kalb wurde kastriert Standardwert = false</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="WithersClass" type="eCH-0261:enumeratedItemType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Widerristhoehe</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ColorFreeText" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Farbe des Equiden</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RaceColor" type="eCH-0261:enumeratedItemType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Rassenfarbe</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="HasWhiteOnLegFrontRight" type="xs:boolean">
@@ -132,56 +182,6 @@
                     <xs:documentation xml:lang="de">Hat weisse Abzeichen am Kopf</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="Gender" type="eCH-0261:enumeratedItemType">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Geschlecht</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="EquidSpecies" type="eCH-0261:enumeratedItemType">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Gattung</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="DeathTime" type="xs:dateTime">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Zeitpunkt des Todes</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="ColorFreeText" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Farbe des Equiden</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="ChipNumber" type="eCH-0261:identifierType">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Chipnummer</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="Breed" type="eCH-0261:enumeratedItemType">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Rasse</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="BirthWeight" type="xs:decimal">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Geburtsgewicht in kg mit einer Nachkommastelle</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="BirthWeight" type="xs:decimal">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Geburtsgewicht in kg</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="nan" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">nan</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="BirthDate" type="xs:dateTime">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Geburtsdatum</xs:documentation>
-                </xs:annotation>
-            </xs:element>
         </xs:all>
     </xs:complexType>
     <xs:complexType name= "Gruppenmeldung">
@@ -190,6 +190,36 @@
             <xs:documentation xml:lang="en">BLA</xs:documentation>
         </xs:annotation>
         <xs:all>
+            <xs:element name="TVDNumberStay" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">TVD Nummer der Aufenthaltstierhaltung</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ArrivalNotificationDate" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Meldedatum des Zugangs</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ArrivalNotificationType" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Meldungstyp der Zugangsmeldung Moegliche Werte: siehe GetCodes</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="countryOrigin" type="eCH-0261:enumeratedItemType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Herkunftsland, z.B. DE (nur bei Import, sonst nil)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="eventDate" type="xs:dateTime">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">Ereignisdatum</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="TVDNumberOrigin" type="eCH-0261:identifierType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">TVD Nummer der Herkunftstierhaltung</xs:documentation>
+                </xs:annotation>
+            </xs:element>
             <xs:element name="LeavingNotificationDate" type="xs:dateTime">
                 <xs:annotation>
                     <xs:documentation xml:lang="de">Meldedatum des Abgangs</xs:documentation>
@@ -200,31 +230,6 @@
                     <xs:documentation xml:lang="de">Abgangsdatum</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="TVDNumberStay" type="eCH-0261:identifierType">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">TVD Nummer der Aufenthaltstierhaltung</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="countryOrigin" type="eCH-0261:enumeratedItemType">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Herkunftsland, z.B. DE (nur bei Import, sonst nil)</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="ArrivalNotificationType" type="eCH-0261:identifierType">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Meldungstyp der Zugangsmeldung MÃ¶gliche Werte: siehe GetCodes</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="ArrivalNotificationDate" type="xs:string">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Meldedatum des Zugangs</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="TVDNumberOrigin" type="eCH-0261:identifierType">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">TVD Nummer der Herkunftstierhaltung</xs:documentation>
-                </xs:annotation>
-            </xs:element>
             <xs:element name="Notifier" type="eCH-0261:identifierType">
                 <xs:annotation>
                     <xs:documentation xml:lang="de">TVD Nummer der meldenden Tierhaltung</xs:documentation>
@@ -233,11 +238,6 @@
             <xs:element name="notificationDate" type="xs:dateTime">
                 <xs:annotation>
                     <xs:documentation xml:lang="de">Meldedatum</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="eventDate" type="xs:dateTime">
-                <xs:annotation>
-                    <xs:documentation xml:lang="de">Ereignisdatum</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="HerdenIdentificationNumber" type="eCH-0261:identifierType">
@@ -265,17 +265,17 @@
         <xs:all>
             <xs:element name="UELN" type="eCH-0261:identifierType">
                 <xs:annotation>
-                    <xs:documentation xml:lang="de">FÃ¼hrende UELN des Equiden</xs:documentation>
+                    <xs:documentation xml:lang="de">Fuehrende UELN des Equiden</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="IsPassPresent" type="xs:boolean">
                 <xs:annotation>
-                    <xs:documentation xml:lang="de">Ist fÃ¼r Equid ein Pass ausgestellt.</xs:documentation>
+                    <xs:documentation xml:lang="de">Ist fuer Equid ein Pass ausgestellt.</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="IsPassportDesired" type="xs:boolean">
                 <xs:annotation>
-                    <xs:documentation xml:lang="de">true: Ausweis erwÃ¼nscht Standardwert: false</xs:documentation>
+                    <xs:documentation xml:lang="de">true: Ausweis erwuenscht Standardwert: false</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="ImplementationsLocation" type="eCH-0007:municipalityIdType">
@@ -323,7 +323,7 @@
             </xs:element>
         </xs:all>
     </xs:complexType>
-    <xs:complexType name= "Melder">
+    <xs:complexType name= "MELDER">
         <xs:annotation>
             <xs:documentation xml:lang="de">BLA</xs:documentation>
             <xs:documentation xml:lang="en">BLA</xs:documentation>
@@ -346,7 +346,30 @@
             </xs:element>
             <xs:element name="AdditionalProperties" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation xml:lang="de">Liste von zusÃ¤tzlichen Attributen zu den Tieren. MÃ¶gliche Keys sind in der WSDL des eTransit Webservices definiert: PigAdditionalPropertyDescriptions</xs:documentation>
+                    <xs:documentation xml:lang="de">Liste von zusaetzlichen Attributen zu den Tieren. Moegliche Keys sind in der WSDL des eTransit Webservices definiert: PigAdditionalPropertyDescriptions</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name= "Merkblatt_Tiererhebung">
+        <xs:annotation>
+            <xs:documentation xml:lang="de">BLA</xs:documentation>
+            <xs:documentation xml:lang="en">BLA</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="tierCodeListe" type="eCH-0261:enumeratedItemType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">BFS: Meldung gemaess EUROSTAT_CODE</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="is_sucking" type="xs:boolean">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">saugt das jungtier?</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="is_lactating" type="xs:boolean">
+                <xs:annotation>
+                    <xs:documentation xml:lang="de">saeugt das muttertier?</xs:documentation>
                 </xs:annotation>
             </xs:element>
         </xs:all>
@@ -359,12 +382,12 @@
         <xs:all>
             <xs:element name="TypeOfUseDate" type="xs:dateTime">
                 <xs:annotation>
-                    <xs:documentation xml:lang="de">Datum der NutzungsartÃ¤nderung</xs:documentation>
+                    <xs:documentation xml:lang="de">Datum der Nutzungsartaenderung</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="TypeOfUse" type="eCH-0261:enumeratedItemType">
                 <xs:annotation>
-                    <xs:documentation xml:lang="de">Nutzungsart des Rindes</xs:documentation>
+                    <xs:documentation xml:lang="de">Nutzungsart</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="PigCategory" type="eCH-0261:enumeratedItemType">
@@ -382,17 +405,17 @@
         <xs:all>
             <xs:element name="OwnerLastName" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation xml:lang="de">Nachname aktueller EigentÃ¼mer</xs:documentation>
+                    <xs:documentation xml:lang="de">Nachname aktueller Eigentuemer</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="OwnerFirstName" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation xml:lang="de">Vorname aktueller EigentÃ¼mer</xs:documentation>
+                    <xs:documentation xml:lang="de">Vorname aktueller Eigentuemer</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="OwnerAgateNumber" type="eCH-0261:identifierType">
                 <xs:annotation>
-                    <xs:documentation xml:lang="de">Aktueller EigentÃ¼mer</xs:documentation>
+                    <xs:documentation xml:lang="de">Aktueller Eigentuemer</xs:documentation>
                 </xs:annotation>
             </xs:element>
         </xs:all>
@@ -450,7 +473,7 @@
             </xs:element>
             <xs:element name="EarTagNumberMother" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation xml:lang="de">Ohrmarkennummer der Mutter im Format â€šCH123456789012â€˜ oder</xs:documentation>
+                    <xs:documentation xml:lang="de">Ohrmarkennummer der Mutter im Format ï¿½CH123456789012ï¿½ oder</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="EarTagNumberGeneticMother" type="xs:string">
@@ -589,7 +612,7 @@
             </xs:element>
             <xs:element name="SheepBreedingOrganisation" type="eCH-0261:identifierType">
                 <xs:annotation>
-                    <xs:documentation xml:lang="de">Bei der Geburtsmeldung angegebene Zuchtorganisation gemÃ¤ss GetCodes</xs:documentation>
+                    <xs:documentation xml:lang="de">Bei der Geburtsmeldung angegebene Zuchtorganisation gemaess GetCodes</xs:documentation>
                 </xs:annotation>
             </xs:element>
         </xs:all>

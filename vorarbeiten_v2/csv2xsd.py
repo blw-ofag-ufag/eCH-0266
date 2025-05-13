@@ -6,7 +6,7 @@ SCHEMA = '<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:eCH-0265=
 
 # read downloaded csv. As csv is located behind a restriction, it must be downloaded from here: https://shareech.sharepoint.com/:x:/r/sites/FGAgriFood/_layouts/15/Doc.aspx?sourcedoc=%7BFCED26D9-51D4-482E-943E-FE032039C5F1%7D&file=IST_Zustand_Abgleich.xlsx&action=default&mobileredirect=true
 
-df = pd.read_csv("pahu_aufgeräumt.csv", sep=";",
+df = pd.read_csv("IST_Zustand_Abgleich_aufgeräumt_pahu.csv", sep=";",
                  encoding="CP1252", header=0, skiprows=0)
 
 # remove empty spaces as they are now allowed in xs:element name and type
@@ -15,6 +15,7 @@ df['Datentyp'] = df['Datentyp'].str.replace(' ', '')
 
 print(df.columns)
 
+"""
 # add correct types
 df['Datentyp'] = df['Datentyp'].str.replace('int', 'xs:int')
 df['Datentyp'] = df['Datentyp'].str.replace('Int', 'xs:int')
@@ -40,7 +41,7 @@ df['Datentyp'] = df['Datentyp'].str.replace(
     'TranslatedEnumTyp eOfEnumEquidSpe cies', 'eCH-0261:enumeratedItemType')
 df['Datentyp'] = df['Datentyp'].str.replace(
     'decimal', 'xs:decimal')
-
+"""
 
 level_n = []
 themas = df.iloc[:, 0]
