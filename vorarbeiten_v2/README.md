@@ -1,4 +1,4 @@
-# Vorarbeiten 0266
+# Vorarbeiten Neuer Standard Nutztiere
 
 Dieser Ordner enthält die Vorarbeiten für die neue Version des Datenstandard Nutztiere.
 - Ist_Zustand_Abgleich.csv enthält die fachlichen Rückmeldungen, welche Elemente im Standard enthalten sein müssen. Das File ist die Arbeitsgrundlage: Namen, Beschreibung, Datentypen, etc. sollen hier abgepasst und ergänzt werden.
